@@ -1,0 +1,17 @@
+{
+	"name": "LEAN development environment",
+	"dockerFile": "Dockerfile",
+	"remoteUser": "dev",
+	"postCreateCommand": "lake exe cache get",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				// "ms-azuretools.vscode-docker",
+				"leanprover.lean4"
+			]
+		}
+	},
+	"containerEnv": {
+		"SHELL": "/bin/bash"
+	}
+}
