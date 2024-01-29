@@ -7,6 +7,7 @@ Everything is covered again more slowly and with exercises in the next files.
 import Mathlib.Data.Real.Basic
 -- We want to be able to use Lean's built-in "help" functionality
 import Mathlib.Tactic.LibrarySearch
+import Mathlib.Tactic
 
 
 -- We want to be able to define functions using the law of excluded middle
