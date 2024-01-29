@@ -96,7 +96,7 @@ example (a b c d : ℝ) (hyp : c = b * a - d) (hyp' : d = a * b) : c = 0 := by
 example (a b c d : ℝ) (hyp : c = b * a - d) (hyp' : d = a * b) : c = 0 := by
   sorry
 
--- 5. Prove this using forwards reasoning, using have. You may need sub_nonneg [Tut 0009]
+-- 5. Prove this using forwards reasoning, using have. You may need `sub_nonneg` [Tut 0009]
 #check sub_nonneg
 example (a b : ℝ) (hab : a ≤ b) (c : ℝ) : a + c ≤ b + c := by
   sorry
