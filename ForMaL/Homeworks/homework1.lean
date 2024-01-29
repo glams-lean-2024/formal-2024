@@ -11,7 +11,7 @@ Please read the following and complete the exercises below. This is a section fr
 -/
 
 /-
-We are going to prove that multiplication by a nonnegative real number preserves the ≤ relation on real numbers. That is: for real numbers a, b, c with a ≤ b and 0 ≤ c, then a * c ≤ b * c. We will use the following lemmas:
+We are going to prove that multiplication by a nonnegative real number preserves the ≤ relation on real numbers. That is: for real numbers `a, b, c`, if `a ≤ b` and `0 ≤ c`, then `a * c ≤ b * c`. We will use the following lemmas:
 -/
 
 #check sub_nonneg
