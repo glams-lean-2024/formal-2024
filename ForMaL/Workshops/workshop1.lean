@@ -91,7 +91,7 @@ example (a b c d e f : ℝ) (h : b * c = e * f) : a * b * c * d = a * e * f * d 
 example (a b c d : ℝ) (hyp : c = b * a - d) (hyp' : d = a * b) : c = 0 := by
   sorry
 
--- 4. Prove this using forwards reasoning.  You may need sub_self [Tut 0004]
+-- 4. Prove this using forwards reasoning.  You may need `sub_self` [Tut 0004]
 #check sub_self
 example (a b c d : ℝ) (hyp : c = b * a - d) (hyp' : d = a * b) : c = 0 := by
   sorry
