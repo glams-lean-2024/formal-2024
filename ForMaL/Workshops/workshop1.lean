@@ -25,6 +25,10 @@ example (a b c d e f : ℝ) (h : a * b = c * d) (h' : e = f) : a * (b * e) = c *
   rw [h]
   rw [mul_assoc]
 
+-- Can also chain multiple rewrites together.
+example (a b c d e f : ℝ) (h : a * b = c * d) (h' : e = f) : a * (b * e) = c * (d * f) := by
+  rw [h', ← mul_assoc, h, mul_assoc]
+
 -- A `calc` block can help to structure a sequence of rewrites.
 example : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
   calc
@@ -41,16 +45,13 @@ example : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
 
 -- Can proceed from the hypotheses to the goal. E.g. can rewrite in hypotheses.
 example (a b c d : ℝ) (hyp : c = d * a + b) (hyp' : b = a * d) : c = 2 * a * d := by
-  rw [hyp'] at hyp
-  rw [mul_comm d a] at hyp
-  rw [← two_mul (a * d)] at hyp
-  rw [← mul_assoc 2 a d] at hyp
+  rw [hyp', mul_comm d a, ← two_mul (a * d), ← mul_assoc 2 a d] at hyp
   exact hyp -- Having constructed the exact goal in the context, we use `exact`.
 
 -- The `have` tactic allows for the introduction of intermediate hypotheses.
 theorem mul_zero (a : ℝ) : a * 0 = 0 := by
   have h : a * 0 + a * 0 = a * 0 + 0 := by
-    rw [← mul_add, add_zero, add_zero]
+    rw [← mul_add, add_zero, add_zero] -- An indented section gives a proof of the preceding goal introduced by `have`.
   rw [add_left_cancel h]
 
 /-
