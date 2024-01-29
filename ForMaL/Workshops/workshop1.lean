@@ -87,7 +87,7 @@ example (h : 2 * a ≤ 3 * b) (h' : 1 ≤ a) (h'' : d = 2) : d + a ≤ 5 * b := 
 example (a b c : ℝ) : a * (b * c) = b * (a * c) := by
   sorry
 
--- 2. Prove this using rw [MIL 2.1]
+-- 2. Prove this using `rw` [MIL 2.1]
 example (a b c d e f : ℝ) (h : b * c = e * f) : a * b * c * d = a * e * f * d := by
   sorry
 
