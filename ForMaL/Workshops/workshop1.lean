@@ -63,6 +63,10 @@ example (x y z : ℝ) (h₀ : x ≤ y) (h₁ : y ≤ z) : x ≤ z := by
   · apply h₀
   . apply h₁
 
+-- Note that after `apply le_trans` there will be 3 new goals on the tactic state. In these cases, Lean first expects a proof of the first goal, then of the second, and so on. You can use `·` to focus on the first goal temporarily. Place your cursor at different stages of the proof to see how this work.
+
+-- Challenge question: there were 3 goals, but we only proved 2. What happened to the third one?
+
 /-
 # And finally....
 -/
