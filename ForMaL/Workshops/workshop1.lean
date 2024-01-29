@@ -1,12 +1,12 @@
-/- # Basics: rewriting, calculating, reasoning forwards and backwards
-References: [MIL] Mathematics in Lean, [Tut] Tutorials project.
-Most of the demonstration section comes [MIL].
+/-
+  # Basics: rewriting, calculating, reasoning forwards and backwards
+  References: [MIL] Mathematics in Lean, [Tut] Tutorials project.
+  Most of the demonstration section comes [MIL].
 -/
-
 import Mathlib.Tactic
 
-/-
-# Rewriting and calculating
+/-!
+  # Rewriting and calculating
 -/
 
 -- Lean knows some lemmas about real numbers.
@@ -39,7 +39,7 @@ example : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
     _ = a * a + 2 * (a * b) + b * b := by
       rw [mul_comm b a, ← two_mul]
 
-/-
+/-!
 # Forwards reasoning
 -/
 
@@ -54,7 +54,7 @@ theorem mul_zero (a : ℝ) : a * 0 = 0 := by
     rw [← mul_add, add_zero, add_zero] -- An indented section gives a proof of the preceding goal introduced by `have`.
   rw [add_left_cancel h]
 
-/-
+/-!
 #  Backwards reasoning
 -/
 
@@ -68,7 +68,7 @@ example (x y z : ℝ) (h₀ : x ≤ y) (h₁ : y ≤ z) : x ≤ z := by
 
 -- Challenge question: there were 3 goals, but we only proved 2. What happened to the third one?
 
-/-
+/-!
 # And finally....
 -/
 
@@ -80,7 +80,7 @@ example (a b : ℝ) : a + b + a = 2 * a + b := by
 example (h : 2 * a ≤ 3 * b) (h' : 1 ≤ a) (h'' : d = 2) : d + a ≤ 5 * b := by
   linarith
 
-/-
+/-!
 # Exercises
 -/
 
