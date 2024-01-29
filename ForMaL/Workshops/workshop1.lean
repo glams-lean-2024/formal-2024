@@ -45,7 +45,7 @@ example (a b c d : ℝ) (hyp : c = d * a + b) (hyp' : b = a * d) : c = 2 * a * d
   rw [mul_comm d a] at hyp
   rw [← two_mul (a * d)] at hyp
   rw [← mul_assoc 2 a d] at hyp
-  exact hyp -- Having constructed the exact goal in the context, we use exact.
+  exact hyp -- Having constructed the exact goal in the context, we use `exact`.
 
 -- The `have` tactic allows for the introduction of intermediate hypotheses.
 theorem mul_zero (a : ℝ) : a * 0 = 0 := by
