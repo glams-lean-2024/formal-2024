@@ -83,7 +83,7 @@ example (h : 2 * a ≤ 3 * b) (h' : 1 ≤ a) (h'' : d = 2) : d + a ≤ 5 * b := 
 # Exercises
 -/
 
--- 1. Prove this using rw [MIL 2.1]
+-- 1. Prove this using `rw` [MIL 2.1]
 example (a b c : ℝ) : a * (b * c) = b * (a * c) := by
   sorry
 
