@@ -101,7 +101,7 @@ example (a b c d : ℝ) (hyp : c = b * a - d) (hyp' : d = a * b) : c = 0 := by
 example (a b : ℝ) (hab : a ≤ b) (c : ℝ) : a + c ≤ b + c := by
   sorry
 
--- 6. Here are some lemmas about the ≤ relation. You may find them useful to prove the following using backwards reasoning with apply. [MIL 2.3]
+-- 6. Here are some lemmas about the `≤` relation. You may find them useful to prove the following using backwards reasoning with `apply`. [MIL 2.3]
 
 #check lt_of_le_of_lt
 #check lt_of_lt_of_le
