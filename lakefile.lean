@@ -12,3 +12,7 @@ require mathlib from git
 lean_lib «Formal2024» {
   -- add any library configuration options here
 }
+
+lean_lib «MIL» {
+  srcDir:= "References"
+}
