@@ -7,7 +7,7 @@ import Mathlib.Tactic
 
 /-
 # Problem  1
-Read the following section of [Tut] and complete the exercises 0013, 0014, 0015. The exercise is to prove the same statement using backwards reasoning, forwards reasoning, and a combination of both.
+Please read the following and complete the exercises below. This is a section from [Tut]. The exercise is to prove the same statement using backwards reasoning, forwards reasoning, and a combination of both.
 -/
 
 /-
