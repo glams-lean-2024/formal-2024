@@ -1,7 +1,7 @@
 import Lake
 open Lake DSL
 
-package «formal-2024» {
+package «Formal2024» {
   -- add any package configuration options here
 }
 

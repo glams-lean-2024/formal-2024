@@ -9,4 +9,4 @@ This is the repository for the GlaMS course on Formalising Mathematics in Lean. 
    Or using Gitpod:<br> [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/glams-lean-2024/formal-2024)
 
 3. Installing Lean on your computer following these [instructions](https://leanprover-community.github.io/get_started.html).
-   Then you can clone this repository to your own computer by writing `leanprover get glams-lean-2024/formal-2024` in your terminal.
+   Then you can clone this repository to your own computer by writing `git clone https://github.com/glams-lean-2024/formal-2024.git` in your terminal, followed by `lake exe cache get`.
