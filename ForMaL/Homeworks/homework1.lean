@@ -11,15 +11,16 @@ Please read the following and complete the exercises below. This is a section fr
 -/
 
 /-
-We announce the use of a lemma, and provide proofs after the fact, using
-the `apply` tactic. This is called backward reasoning because we get the conclusion
-first, and provide proofs later. Using `rw` on the goal (rather than on an assumption
-from the local context) is also backward reasoning.
-
-Let's do that using the lemma
-
-  `mul_nonneg {x y : ℝ} (hx : 0 ≤ x) (hy : 0 ≤ y) : 0 ≤ x*y`
+We are going to prove that multiplication by a nonnegative real number preserves the ≤ relation on real numbers. That is: for real numbers a, b, c with a ≤ b and 0 ≤ c, then a * c ≤ b * c. We will use the following lemmas:
 -/
+
+#check sub_nonneg
+#check mul_nonneg
+
+/-
+We first prove this using backwards reasoning: using `apply` to announce the use of a lemma, and provide proofs after the fact, and using `rw` on the goal.
+-/
+
 example (a b c : ℝ) (hc : 0 ≤ c) (hab : a ≤ b) : a * c ≤ b * c := by
   rw [← sub_nonneg]
   have key : b * c - a * c = (b - a) * c := by ring
@@ -80,12 +81,12 @@ example (a b c : ℝ) (hc : 0 ≤ c) (hab : a ≤ b) : a * c ≤ b * c := by
 
 
 /-
-Let's now practice all three styles using:
-
-  `mul_nonneg_of_nonpos_of_nonpos {a b : α} (ha : a ≤ 0) (hb : b ≤ 0) : 0 ≤ a * b`
-
-  `sub_nonpos {a b : α} : a - b ≤ 0 ↔ a ≤ b`
+Let's now practice all three styles using the following lemmas to help:
 -/
+
+#check mul_nonneg_of_nonpos_of_nonpos
+#check sub_nonpos
+
 -- First using mostly backward reasoning
 -- 0013
 example (a b c : ℝ) (hc : c ≤ 0) (hab : a ≤ b) : b * c ≤ a * c := by
