@@ -1,6 +1,6 @@
 # Formalising Mathematics in Lean
 
-This is the repository for the GlaMS course on Formalising Mathematics in Lean. The course content (workshop sheets and homeworks) is located in the folder `ForMaL`,  which also contains some references we are using.
+This is the repository for the GlaMS course on Formalising Mathematics in Lean. The course content (workshop sheets and homeworks) is located in the folder `Formal2024`. There is also a `References` folder.
 
 ## How to work on this
 
