@@ -109,3 +109,7 @@ example (a b : ℝ) (hab : a ≤ b) (c : ℝ) : a + c ≤ b + c := by
 
 example (a b c d e : ℝ) (h₀ : a ≤ b) (h₁ : b < c) (h₂ : c ≤ d) (h₃ : d < e) : a < e := by
   sorry
+
+-- Once you have a backwards reasoning proof, try writing one using `calc`. Notice how `calc` takes care of the relevant transitivity properties of the order relations for you.
+example (a b c d e : ℝ) (h₀ : a ≤ b) (h₁ : b < c) (h₂ : c ≤ d) (h₃ : d < e) : a < e := by
+  sorry
