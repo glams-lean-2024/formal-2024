@@ -18,7 +18,7 @@ example (a b c : ℝ) : a * b * c = b * (a * c) := by
   rw [mul_comm a b]
   rw [mul_assoc] -- no need to supply variables here
 
--- Can also rewrite backwards, and use hypotheses.
+-- Can also rewrite backwards by adding `<-` within `rw`, and use hypotheses.
 example (a b c d e f : ℝ) (h : a * b = c * d) (h' : e = f) : a * (b * e) = c * (d * f) := by
   rw [h']
   rw [← mul_assoc]
