@@ -13,7 +13,7 @@ import Mathlib.Tactic
 #check mul_comm
 #check mul_assoc
 
--- The rewrite tactic can use these lemmas.
+-- The rewrite tactic `rw` can use these lemmas.
 example (a b c : ℝ) : a * b * c = b * (a * c) := by
   rw [mul_comm a b]
   rw [mul_assoc] -- no need to supply variables here
