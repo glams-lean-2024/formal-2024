@@ -61,6 +61,36 @@ example: ∀ x y z : ℝ, x ≤ y → y ≤ z → x ≤ z := by
   · exact h₀
   · exact h₁
 
+-- Lean allows named hypotheses. The two following examples are equivalent:
+section
+
+variable (P Q : Prop)
+
+theorem ex1 : P → Q := by sorry
+
+theorem ex2 (h : P) : Q := by sorry
+
+#check ex1
+#check ex2
+
+-- Lean allows for implicit arguments, using the curly brackets,
+-- when it is possible to infer them from context:
+
+theorem ex3 {n : ℕ} (hyp : n > 1) : n + 1 > 0 := by sorry
+
+variable (a : ℕ)
+variable (ha : a > 1)
+
+#check ex3 ha
+
+-- Notice that passing the implicit argument gives an error.
+-- To pass an implicit argument you need to put a `@` before
+
+#check @ex3 a ha
+
+
+
+end
 
 -- Using the universal quantifier, we define an upper bounded function
 def FnUb (f : ℝ → ℝ) (a : ℝ) : Prop :=
@@ -97,6 +127,7 @@ conciseness and human readability is up to you!
 theorem fnUb_add {f g : ℝ → ℝ} {a b : ℝ} (hfa : FnUb f a) (hgb : FnUb g b) :
     FnUb (fun x ↦ f x + g x) (a + b) :=
   fun x ↦ add_le_add (hfa x) (hgb x) -- Note the brackets (terms would be grouped on the left by default)
+
 
 
 
