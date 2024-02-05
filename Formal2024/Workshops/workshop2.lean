@@ -48,6 +48,7 @@ variable (ha : |a| < δ) (hb : |b| < δ)
 -- Lean automatically groups on the left, so `f x y` means `f(x)(y)`
 -- If you need a different order you need to specify it with appropriate brackets
 
+-- Notice that throughout this section, defined using `section` and `end`, everything defined with `variable` was always visible in the context. Outside of the section these variables will not be available in the context.
 end
 
 
