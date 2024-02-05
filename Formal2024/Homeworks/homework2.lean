@@ -8,7 +8,7 @@ import Mathlib.Data.Real.Basic
 import Mathlib.Tactic
 
 /-
-The next exercises use divisibility in ℤ (beware the ∣ symbol which is
+The next set of exercises uses divisibility in `ℤ` (beware the `∣` symbol which is
 not ASCII). This is done by writing `\|`.
 
 By definition, `a ∣ b ↔ ∃ k, b = a * k`, so you can prove `a ∣ b` using the
