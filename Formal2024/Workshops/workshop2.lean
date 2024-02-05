@@ -82,9 +82,9 @@ example (hfa : FnUb f a) (hgb : FnUb g b) : FnUb (fun x ↦ f x + g x) (a + b) :
   -- This step makes Lean unpack the definition of the function.
   -- It is not needed, but it makes things clearer
   apply add_le_add
-  exact hfa x
+  · exact hfa x
   -- `hfa x` is now a proof of `f x ≤ a`
-  exact hgb x
+  · exact hgb x
 
 /-
 Since Lean sees an implication as a function from proofs of a Proposition to
@@ -144,7 +144,9 @@ example (nnf : FnLb f 0) (nng : FnLb g 0) : FnLb (fun x ↦ f x * g x) 0 :=
   use 5/2 -- Notice how the goal has changed
   norm_num -- This is a useful tactic that does arithmetic computations.
 
--- We can construct a proof term explicitly using the "anonymous constructor" notation
+-- We can construct a proof term explicitly using the "anonymous constructor" notation.
+-- For this we give the element with the desired property, followed by a proof of the property,
+-- inside angle brackets `⟨⟩` (you can type these using `\<>`).
 
 example : ∃ x : ℝ, 2 * x = 5 :=
   ⟨5/2 , by norm_num⟩ -- Lean matches the given data with the goal
@@ -152,16 +154,16 @@ example : ∃ x : ℝ, 2 * x = 5 :=
 -- To use an exists statement, we need the command `rcases` and the anonymus constructor
 
 def FnHasUb (f : ℝ → ℝ) :=
-  ∃ a, FnUb f a -- f has an upper bound
+  ∃ a, FnUb f a -- `f` has an upper bound
 
 example (ubf : FnHasUb f) (ubg : FnHasUb g) : FnHasUb fun x ↦ f x + g x := by
   rcases ubf with ⟨a, ubfa⟩
-  -- Adds new variable a (the upper bound) with property ubfa (a is the upper bound)
+  -- Adds new variable `a` (the upper bound) with property `ubfa` (`a` is the upper bound)
   rcases ubg with ⟨b, ubgb⟩
   use a + b
   apply fnUb_add ubfa ubgb
 
-  -- Intro and rcases can be combined into one command `rintro`
+  -- `intro` and `rcases` can be combined into one command: `rintro`
 
 example : FnHasUb f → FnHasUb g → FnHasUb fun x ↦ f x + g x := by
   rintro ⟨a, ubfa⟩ ⟨b, ubgb⟩
@@ -192,7 +194,7 @@ example (surjg : Surjective g) (surjf : Surjective f) : Surjective fun x ↦ g (
   # Negation
 -/
 
--- To write `¬` type
+-- To write `¬` type `\not`.
 -- Lean interprets a negation `¬a` as `a → False`, so tactics for implications work
 
 
