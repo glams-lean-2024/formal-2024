@@ -41,10 +41,8 @@ example (h1 : a ∣ b) (h2 : a ∣ c) : a ∣ b + c := by
 
 
 example : a ∣ b → a ∣ c → a ∣ b + c := by
-/-
-To get an even shorter proof, you can use the same `rfl` trick with
-the `rintro` tactic too. Try proving it both ways.
--/
+-- To get an even shorter proof, you can use the same `rfl` trick with
+-- the `rintro` tactic too. Try proving it both ways.
   sorry
 
 open Function
