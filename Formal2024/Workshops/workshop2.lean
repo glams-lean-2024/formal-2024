@@ -66,7 +66,7 @@ example: ∀ x y z : ℝ, x ≤ y → y ≤ z → x ≤ z := by
 def FnUb (f : ℝ → ℝ) (a : ℝ) : Prop :=
   ∀ x, f x ≤ a
 
-
+section
 
 variable (f g : ℝ → ℝ) (a b : ℝ)
 
@@ -99,6 +99,7 @@ theorem fnUb_add {f g : ℝ → ℝ} {a b : ℝ} (hfa : FnUb f a) (hgb : FnUb g 
   fun x ↦ add_le_add (hfa x) (hgb x) -- Note the brackets (terms would be grouped on the left by default)
 
 
+
 /-!
 # Exercises
 -/
@@ -125,7 +126,7 @@ example (hfa : FnLb f a) (hgb : FnLb g b) : FnLb (fun x ↦ f x + g x) (a + b) :
 example (nnf : FnLb f 0) (nng : FnLb g 0) : FnLb (fun x ↦ f x * g x) 0 :=
   sorry
 
-
+end
 
 
 
