@@ -64,7 +64,7 @@ variable (f g : ℝ → ℝ) (a b : ℝ)
 
 example (hfa : FnUb f a) (hgb : FnUb g b) : FnUb (fun x ↦ f x + g x) (a + b) := by
   intro x
-  dsimp -- This step is needed for lean to unpack the definition of the function
+  dsimp -- This step is needed for Lean to unpack the definition of the function
   apply add_le_add
   exact hfa x
   -- `hfa x` is now a proof of `f x ≤ a`
