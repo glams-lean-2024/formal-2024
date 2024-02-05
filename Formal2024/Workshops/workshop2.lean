@@ -13,7 +13,7 @@ namespace Week2
   # Implication and universal quantifier
 -/
 
--- To write `∀` type
+-- To write `∀` type `\forall`
 
 -- Lean treats the universal quantifier as an implication.
 -- Implications are grouped on the RIGHT (N.B. this is different from the usual convention)
