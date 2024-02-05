@@ -26,8 +26,8 @@ example (h₁ : a ∣ b) (h₂ : b ∣ c) : a ∣ c := by
 A very common pattern is to have an assumption or lemma asserting
   `h : ∃ x, y = ...`
 and this is used through the combo:
-  rcases h with ⟨x, hx⟩
-  rw hx at ...
+  `rcases h with ⟨x, hx⟩`
+  `rw hx at ...`
 The tactic `rcases` allows us to simplify the above combo when the
 name `hx` is replaced by the special name `rfl`, as in the following example.
 -/
