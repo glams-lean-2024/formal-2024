@@ -28,6 +28,7 @@ A very common pattern is to have an assumption or lemma asserting
 and this is used through the combo:
   `rcases h with ⟨x, hx⟩`
   `rw hx at ...`
+Note that to write the term `⟨x, hx⟩` as above, you type `\langle x, hx \rangle` or equivalently `\< x, hx \>`.
 The tactic `rcases` allows us to simplify the above combo when the
 name `hx` is replaced by the special name `rfl`, as in the following example.
 -/
