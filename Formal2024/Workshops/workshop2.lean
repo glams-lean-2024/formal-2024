@@ -197,7 +197,7 @@ example (h : Q) : ¬¬Q := by
 -/
 
 
--- The law of excluded middle (tertium non datur) can only be proved by contradiction
+-- The law of excluded middle (in latin, _tertium non datur_) can only be proved by contradiction
 example (h : ¬¬Q) : Q := by
   by_contra h'
   exact h h'
