@@ -15,8 +15,8 @@ namespace Week2
 
 -- To write `∀` type `\forall`
 
--- Lean treats the universal quantifier as an implication.
--- Implications are grouped on the RIGHT (N.B. this is different from the usual convention)
+-- Lean treats the universal quantifier as an implication
+-- Implications are grouped on the RIGHT (N.B. this is different from the usual convention for operations like +, *, ...)
 
 theorem my_lemma : ∀ x y ε : ℝ, 0 < ε → ε ≤ 1 → |x| < ε → |y| < ε → |x * y| < ε :=
   sorry
@@ -25,14 +25,28 @@ theorem my_lemma : ∀ x y ε : ℝ, 0 < ε → ε ≤ 1 → |x| < ε → |y| < 
 section
 -- Naively, you can think of types as sets. Here these variables are real numbers
 variable (a b δ : ℝ)
+
+-- Lean has a special type for propositions, called `Prop`
+#check a+b=δ
+
+-- Lean doesn't care if a Proposition is true or false, as long as it is well-formed
+#check 2+2=5
+#check 1=1
+#check == -- Delete this line to get rid of the error message
+
 -- Being of the type of a Proposition means being a proof
 variable (h₀ : 0 < δ) (h₁ : δ ≤ 1)
 variable (ha : |a| < δ) (hb : |b| < δ)
+
 
 -- An implication is something like a function from sets of proofs to set of proofs
 #check my_lemma a b δ
 #check my_lemma a b δ h₀ h₁
 #check my_lemma a b δ h₀ h₁ ha hb
+
+-- Notice the syntax: if `f` is a function, Lean reads `f x` as `f(x)` (and gives error if `x` is not a valid input)
+-- Lean automatically groups on the left, so `f x y` means `f(x)(y)`
+-- If you need a different order you need to specify it with appropriate brackets
 
 end
 
@@ -43,8 +57,8 @@ example: ∀ x y z : ℝ, x ≤ y → y ≤ z → x ≤ z := by
   intro x y z h₀ h₁
   -- Now we can proceed as usual
   apply le_trans
-  · apply h₀
-  · apply h₁
+  · exact h₀
+  · exact h₁
 
 
 -- Using the universal quantifier, we define an upper bounded function
@@ -64,7 +78,9 @@ variable (f g : ℝ → ℝ) (a b : ℝ)
 
 example (hfa : FnUb f a) (hgb : FnUb g b) : FnUb (fun x ↦ f x + g x) (a + b) := by
   intro x
-  dsimp -- This step is needed for Lean to unpack the definition of the function
+  dsimp
+  -- This step makes Lean unpack the definition of the function.
+  -- It is not needed, but it makes things clearer
   apply add_le_add
   exact hfa x
   -- `hfa x` is now a proof of `f x ≤ a`
