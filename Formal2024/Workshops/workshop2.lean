@@ -147,7 +147,7 @@ example (ubf : FnHasUb f) (ubg : FnHasUb g) : FnHasUb fun x ↦ f x + g x := by
   use a + b
   apply fnUb_add ubfa ubgb
 
-  -- Intro and rcases can be combined into one command `rintro`
+  -- `intro` and `rcases` can be combined into one command: `rintro`
 
 example : FnHasUb f → FnHasUb g → FnHasUb fun x ↦ f x + g x := by
   rintro ⟨a, ubfa⟩ ⟨b, ubgb⟩
