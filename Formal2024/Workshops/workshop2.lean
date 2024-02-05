@@ -138,7 +138,7 @@ example : ∃ x : ℝ, 2 * x = 5 :=
 -- To use an exists statement, we need the command `rcases` and the anonymus constructor
 
 def FnHasUb (f : ℝ → ℝ) :=
-  ∃ a, FnUb f a -- f has an upper bound
+  ∃ a, FnUb f a -- `f` has an upper bound
 
 example (ubf : FnHasUb f) (ubg : FnHasUb g) : FnHasUb fun x ↦ f x + g x := by
   rcases ubf with ⟨a, ubfa⟩
