@@ -112,7 +112,7 @@ def FnLb (f : ℝ → ℝ) (a : ℝ) : Prop :=
 example (hfa : FnLb f a) (hgb : FnLb g b) : FnLb (fun x ↦ f x + g x) (a + b) :=
   sorry
 
--- 2. Now try proving it without using any tactic!
+-- 2. Now try proving it without using any tactic, writing a proof term
 
 example (hfa : FnLb f a) (hgb : FnLb g b) : FnLb (fun x ↦ f x + g x) (a + b) :=
   sorry

@@ -11,7 +11,7 @@ import Mathlib.Tactic
 The next set of exercises uses divisibility in `ℤ` (beware the `∣` symbol which is
 not ASCII). This is done by writing `\|`.
 
-By definition, `a ∣ b ↔ ∃ k, b = a * k`, so you can prove `a ∣ b` using the
+By definition, `a ∣ b := ∃ k, b = a * k`, so you can prove `a ∣ b` using the
 `use` tactic.
 -/
 -- Until the end of this file, `a`, `b` and `c` will denote integers, unless
@@ -65,6 +65,7 @@ example (hf : Surjective f) (hg : Surjective g) : Surjective (g ∘ f) := by
 -- Some are trivial after applying `push_neg`. Try doing them explicitly too, as an exercise.
 variable {α : Type*} (P : α → Prop) (Q : Prop)
 
+-- [MIL] S03
 example (h : ¬∃ x, P x) : ∀ x, ¬P x := by
   sorry
 
