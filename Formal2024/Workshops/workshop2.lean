@@ -187,10 +187,10 @@ example (h : Q) : ¬¬Q := by
 
 
 /-!
-  Lean comes with many tactics that helps to deal with negation:
-  · `by_contra h` proof by contradiction: allows us to prove `Q` by assuming
-    `h=¬Q` and deriving a contradiction
-  ⬝ `push_neg` push negations inside quantifiers, changing `¬∀` into `∃¬`, etc...
+  Lean comes with many tactics that help to deal with negation:
+  · `by_contra h` applies proof by contradiction: allows us to prove `Q` by assuming
+      `h = ¬Q` and changing the goal to `False`
+  ⬝ `push_neg` pushes negations inside quantifiers, changing `¬∀` into `∃¬`, etc...
   ⬝ `contrapose` transforms a goal `A → B` to `¬B → ¬A`
   ⬝ `contrapose!` does `contrapose`, and then applies `push_neg` automatically
   ⬝ `exfalso` applies the theorem `False → Q`, changing the goal into `False`
