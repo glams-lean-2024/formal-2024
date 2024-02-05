@@ -11,7 +11,7 @@ import Mathlib.Tactic
 The next exercises use divisibility in ℤ (beware the ∣ symbol which is
 not ASCII). This is done by writing `\|`.
 
-By definition, a ∣ b ↔ ∃ k, b = a*k, so you can prove a ∣ b using the
+By definition, `a ∣ b ↔ ∃ k, b = a * k`, so you can prove `a ∣ b` using the
 `use` tactic.
 -/
 -- Until the end of this file, a, b and c will denote integers, unless
