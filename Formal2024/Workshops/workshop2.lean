@@ -66,9 +66,9 @@ example (hfa : FnUb f a) (hgb : FnUb g b) : FnUb (fun x ↦ f x + g x) (a + b) :
   intro x
   dsimp -- This step is needed for Lean to unpack the definition of the function
   apply add_le_add
-  exact hfa x
+  · exact hfa x
   -- `hfa x` is now a proof of `f x ≤ a`
-  exact hgb x
+  · exact hgb x
 
 /-
 Since Lean sees an implication as a function from proofs of a Proposition to
