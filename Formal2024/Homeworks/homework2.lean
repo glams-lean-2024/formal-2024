@@ -9,7 +9,7 @@ import Mathlib.Tactic
 
 /-
 The next exercises use divisibility in ℤ (beware the ∣ symbol which is
-not ASCII).
+not ASCII). This is done by writing `\|`.
 
 By definition, a ∣ b ↔ ∃ k, b = a*k, so you can prove a ∣ b using the
 `use` tactic.
