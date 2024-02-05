@@ -178,7 +178,7 @@ example (surjg : Surjective g) (surjf : Surjective f) : Surjective fun x ↦ g (
   # Negation
 -/
 
--- To write `¬` type
+-- To write `¬` type `\not`.
 -- Lean interprets a negation `¬a` as `a → False`, so tactics for implications work
 
 
