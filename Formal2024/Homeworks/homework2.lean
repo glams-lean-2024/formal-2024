@@ -62,12 +62,12 @@ example (hf : Surjective f) (hg : Surjective g) : Surjective (g ∘ f) := by
 
 
 -- Of the following 4 exercises, 3 can be done with elementary logic, one needs contradiction.
--- Some are trivial after applying `push_neg`. Try doing them explicitly too, as an exercise.
+-- Some are trivial after applying `push_neg`. Try doing them without using `push_neg` too, as an exercise.
 variable {α : Type*} (P : α → Prop) (Q : Prop)
 
 -- [MIL] S03
 example (h : ¬∃ x, P x) : ∀ x, ¬P x := by
-  sorry
+  aesop
 
 example (h : ∀ x, ¬P x) : ¬∃ x, P x := by
   sorry
