@@ -48,6 +48,7 @@ variable (ha : |a| < δ) (hb : |b| < δ)
 -- Lean automatically groups on the left, so `f x y` means `f(x)(y)`
 -- If you need a different order you need to specify it with appropriate brackets
 
+-- Notice that throughout this section, defined using `section` and `end`, everything defined with `variable` was always visible in the context. Outside of the section these variables will not be available in the context.
 end
 
 
@@ -174,6 +175,7 @@ example : FnHasUb f → FnHasUb g → FnHasUb fun x ↦ f x + g x := by
 # Exercises
 -/
 
+-- We open the `Function` namespace to be able to use theorems and definitions about functions with shorter names, e.g. `Surjective f` instead of `Function.Surjective f`.
 open Function
 
 -- 4. The definition of surjective function involves a universal and an exist quantifier.
