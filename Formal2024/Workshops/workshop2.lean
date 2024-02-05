@@ -174,6 +174,7 @@ example : FnHasUb f → FnHasUb g → FnHasUb fun x ↦ f x + g x := by
 # Exercises
 -/
 
+-- We open the `Function` namespace to be able to use theorems and definitions about functions with shorter names, e.g. `Surjective f` instead of `Function.Surjective f`.
 open Function
 
 -- 4. The definition of surjective function involves a universal and an exist quantifier.
