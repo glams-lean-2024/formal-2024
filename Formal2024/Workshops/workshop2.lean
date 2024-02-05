@@ -142,7 +142,7 @@ def FnHasUb (f : ℝ → ℝ) :=
 
 example (ubf : FnHasUb f) (ubg : FnHasUb g) : FnHasUb fun x ↦ f x + g x := by
   rcases ubf with ⟨a, ubfa⟩
-  -- Adds new variable a (the upper bound) with property ubfa (a is the upper bound)
+  -- Adds new variable `a` (the upper bound) with property `ubfa` (`a` is the upper bound)
   rcases ubg with ⟨b, ubgb⟩
   use a + b
   apply fnUb_add ubfa ubgb
