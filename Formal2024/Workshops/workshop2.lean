@@ -39,7 +39,7 @@ variable (h₀ : 0 < δ) (h₁ : δ ≤ 1)
 variable (ha : |a| < δ) (hb : |b| < δ)
 
 
--- An implication is a function from sets of proofs to set of proofs
+-- An implication is like a function from sets of proofs to set of proofs
 #check my_lemma a b δ
 #check my_lemma a b δ h₀ h₁
 #check my_lemma a b δ h₀ h₁ ha hb
