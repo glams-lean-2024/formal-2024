@@ -232,7 +232,7 @@ example (h : ¬FnHasUb f) : ∀ a, ∃ x, f x > a := by
   exact h
 
 example (h : 0 < 0) : a > 37 := by
-  exfalso
+  exfalso -- we have a contradiction (`0 < 0`), so we can prove anything we want! First change the goal to false.
   linarith
 
 /-!
