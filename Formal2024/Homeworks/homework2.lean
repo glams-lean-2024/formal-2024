@@ -47,7 +47,7 @@ example : a ∣ b → a ∣ c → a ∣ b + c := by
 
 open Function
 
--- In the remaining of this file, f and g will denote functions from ℝ to ℝ.
+-- From now on, `f` and `g` will denote functions from `ℝ` to `ℝ`.
 variable (f g : ℝ → ℝ)
 
 -- [TUT] 0031
