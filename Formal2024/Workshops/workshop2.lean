@@ -73,7 +73,7 @@ example (hfa : FnUb f a) (hgb : FnUb g b) : FnUb (fun x ↦ f x + g x) (a + b) :
 /-
 Since Lean sees an implication as a function from proofs of a Proposition to
 proofs of another Proposition, we can write the proof term explicitly, using `fun`.
-This is more concise, but probably less "human-like". Where to draw the line between
+This is more concise, but probably less "human-like." Where to draw the line between
 conciseness and human readability is up to you!
 -/
 
