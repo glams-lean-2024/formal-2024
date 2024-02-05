@@ -116,7 +116,7 @@ example (nnf : FnLb f 0) (nng : FnLb g 0) : FnLb (fun x ↦ f x * g x) 0 :=
   # Existential quantifier
 -/
 
--- To write `∃` type
+-- To write `∃` type `\exists`.
 
 /-!
   To prove an exists statement, we need to provide 2 things. An object of
