@@ -221,7 +221,7 @@ example (h : 0 < 0) : a > 37 := by
 
 -- 6. Prove this using `push_neg`.
 
-def EvenFun (f:ℝ→ℝ):=
+def EvenFun (f : ℝ → ℝ) :=
  ∀ x, f (-x) = f x
 
 example : ¬EvenFun fun x => 2 * x := by
