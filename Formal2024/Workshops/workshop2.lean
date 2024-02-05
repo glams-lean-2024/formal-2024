@@ -128,7 +128,9 @@ example (nnf : FnLb f 0) (nng : FnLb g 0) : FnLb (fun x ↦ f x * g x) 0 :=
   use 5/2 -- Notice how the goal has changed
   norm_num -- This is a useful tactic that does arithmetic computations.
 
--- We can construct a proof term explicitly using the "anonymous constructor" notation
+-- We can construct a proof term explicitly using the "anonymous constructor" notation.
+-- For this we give the element with the desired property, followed by a proof of the property,
+-- inside angle brackets `⟨⟩` (you can type these using `\<>`).
 
 example : ∃ x : ℝ, 2 * x = 5 :=
   ⟨5/2 , by norm_num⟩ -- Lean matches the given data with the goal
