@@ -52,7 +52,7 @@ variable (ha : |a| < δ) (hb : |b| < δ)
 end
 
 
--- To prove an implication statement, we use intro
+-- To prove an implication statement, we use `intro`
 
 example: ∀ x y z : ℝ, x ≤ y → y ≤ z → x ≤ z := by
   intro x y z h₀ h₁
@@ -212,18 +212,22 @@ open Function
 
 -- 4. The definition of surjective function involves a universal and an exist quantifier.
 -- `Surjective (f : ℝ → ℝ) := ∀ y, ∃ x, f x = y`
--- Prove the following using both `intro` and `rcases`
+-- Prove the following using both `intro` and `use`
+
 
 example {c : ℝ} : Surjective fun x ↦ x + c := by
   sorry
 
 -- 5. Now the exist statement is given as hypothesis. Prove the goal using `rcases`
+section
+
+variable (f g : ℝ → ℝ )
 
 example (surjg : Surjective g) (surjf : Surjective f) : Surjective fun x ↦ g (f x) := by
   sorry
 
 
-
+end
 /-!
   # Negation
 -/
@@ -280,10 +284,12 @@ example : ¬EvenFun fun x => 2 * x := by
 --You will need to make the definition of `EvenFun` explicit first, you can do it by writing `unfold EvenFun`
   sorry
 
+
 -- 7. Prove this using `by_contra`
 
 example (P Q : Prop) (h : ¬Q → ¬P) : P → Q := by
   sorry
+
 
 -- 8. Give a shorter proof using `contrapose`
 
