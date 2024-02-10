@@ -16,3 +16,7 @@ lean_lib «Formal2024» {
 lean_lib «MIL» {
   srcDir:= "References"
 }
+
+lean_lib «Tutorials» {
+  srcDir:= "References"
+}

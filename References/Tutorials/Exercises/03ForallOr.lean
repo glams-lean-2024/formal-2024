@@ -233,4 +233,3 @@ In the next exercise, we can use:
 -- 0028
 example (f : ℝ → ℝ) (h : NonDecreasing f) (h' : ∀ x, f (f x) = x) : ∀ x, f x = x := by
   sorry
-
