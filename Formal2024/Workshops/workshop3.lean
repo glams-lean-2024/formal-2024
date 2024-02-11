@@ -11,6 +11,7 @@ import Library
   Most of the demonstration section comes [MIL].
 -/
 
+import Mathlib.Tactic
 
 /-!
   # Conjunction
