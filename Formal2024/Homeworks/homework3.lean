@@ -1,5 +1,5 @@
 /-
-# Homework 2: Sequences and convergence
+# Homework 3: Sequences and convergence
 References: [MIL] Mathematics in Lean, [Tut] Tutorials project.
 Most of this homework is taken from [MIL 3.6]
 -/
@@ -32,7 +32,7 @@ example (a b : ℝ) : |a| = |a - b + b| := by
   congr
   ring
 
--- Lastly, the `convert` tactic let's us mix some forward and backwards reasoning. It is similar to the
+-- Lastly, the `convert` tactic lets us mix some forward and backwards reasoning. It is similar to the
 -- `apply` tactic, but now the goal doesn't need to match the conclusion of the statement we use exactly.
 -- Instead, it will create a new goal asking us to show that the two agree.
 #check mul_lt_mul_right
