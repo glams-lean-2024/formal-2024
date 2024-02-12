@@ -51,7 +51,7 @@ example {x y : ℝ} : x ≤ y ∧ x ≠ y → ¬y ≤ x := by
 example {x y : ℝ} (h : x ≤ y ∧ x ≠ y) : ¬y ≤ x :=
   fun h' ↦ h.right (le_antisymm h.left h')
 
--- You can next anonymous constructors, even if they mix conjunctions and existential quantifiers.
+-- You can nest anonymous constructors, even if they mix conjunctions and existential quantifiers.
 -- Note that they (usually) associate to the right.
 example : ∃ x : ℕ, 3 < x ∧ x < 5 ∧ ∃ y, y^2 = x :=
   ⟨4, by norm_num, by norm_num, 2, by norm_num⟩
@@ -135,6 +135,7 @@ example {x y : ℝ} : x < |y| → x < y ∨ x < -y := by
     intro h; exact Or.inr h
 
 -- You can nest patterns in `rcases` and `rintro`, even mixing `|` and `⟨⟩`.
+-- Recall that the vertical bar symbol for divisibility is typed with `\|` but for disjunction or absolute value it is just `|`.
 example {m n k : ℕ} (h : m ∣ n ∨ m ∣ k) : m ∣ n * k := by
   rcases h with ⟨a, rfl⟩ | ⟨b, rfl⟩
   -- Recall that using `rfl` in a pattern will rewrite the equation it replaces everywhere.
