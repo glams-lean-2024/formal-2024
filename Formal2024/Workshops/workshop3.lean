@@ -128,11 +128,12 @@ example {x y : ℝ} (h : y > x ^ 2) : y > 0 ∨ y < -1 :=
 -- The notation is slightly different: you use `|` instead of `⟨⟩`.
 -- When we use a disjunction, we have to prove the goal for each side of the disjunction.
 example {x y : ℝ} : x < |y| → x < y ∨ x < -y := by
-  rcases le_or_gt 0 y with h | h -- `le_or_gt` is a lemma that says `0 ≤ y ∨ y < 0`.
-  · rw [abs_of_nonneg h]
-    intro h; exact Or.inl h
-  . rw [abs_of_neg h]
-    intro h; exact Or.inr h
+  have ynegorpos : 0 ≤ y ∨ 0 > y := le_or_gt 0 y
+  rcases ynegorpos with yneg | ypos
+  · rw [abs_of_nonneg yneg]
+    intro h; left; exact h -- The `;` allows us to write tactics on the same line.
+  . rw [abs_of_neg ypos]
+    intro h; right; exact h
 
 -- You can nest patterns in `rcases` and `rintro`, even mixing `|` and `⟨⟩`.
 -- Recall that the vertical bar symbol for divisibility is typed with `\|` but for disjunction or absolute value it is just `|`.
