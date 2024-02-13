@@ -1,5 +1,5 @@
 /-
-# Homework 1: Logic
+# Homework 2: Logic
 References: [MIL] Mathematics in Lean, [Tut] Tutorials project.
 Most of this homework is taken from [Tut04]
 -/

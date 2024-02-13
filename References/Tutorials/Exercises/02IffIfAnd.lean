@@ -1,4 +1,5 @@
 import Mathlib.Data.Real.Basic
+import Mathlib.Tactic
 
 /-
 In the previous file, we saw how to rewrite using equalities.
@@ -371,9 +372,8 @@ only use the following three lemmas:
   `dvd_gcd_iff {a b c : ℕ} : c ∣ gcd a b ↔ c ∣ a ∧ c ∣ b`
 -/
 -- All functions and lemmas below are about natural numbers.
-open Nat
+namespace Nat
 
 -- 0022
 example (a b : ℕ) : a ∣ b ↔ gcd a b = a := by
   sorry
-
