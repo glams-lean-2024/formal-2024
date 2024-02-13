@@ -44,8 +44,9 @@ example {x y : ℝ} (h : x ≤ y ∧ x ≠ y) : ¬y ≤ x := by
   exact le_antisymm h₀ h₁
 
 example {x y : ℝ} : x ≤ y ∧ x ≠ y → ¬y ≤ x := by
-  rintro ⟨h₀, h₁⟩ h'
-  exact h₁ (le_antisymm h₀ h')
+  rintro ⟨h₀, h₁⟩ h' -- Recall that `¬P` is defined as `P → False`.
+  apply h₁
+  exact le_antisymm h₀ h'
 
 -- You can also access the parts of a conjunction `h` with `h.left` and `h.right` (or `h.1` and `h.2`).
 example {x y : ℝ} (h : x ≤ y ∧ x ≠ y) : ¬y ≤ x :=
@@ -84,7 +85,8 @@ example (x : ℝ) : |x + 3| < 5 → -8 < x ∧ x < 2 := by
   rw [abs_lt]
   intro h
   constructor <;> linarith
--- The `<;>` tactic combinator attempts to close every open goal with the given tactic
+-- The `<;>` tactic combinator attempts to close every goal opened by `constrcutor`
+-- with the given tactic, in this case `linarith`.
 
 
 /-!
@@ -161,6 +163,7 @@ example (P : Prop) : ¬¬P → P := by
 example (P : Prop) : ¬¬P → P := by
   intro h
   by_cases h' : P
+  -- `P` is the proposition we are splitting on, and `h'` is the name of the hypothesis we get.
   · assumption
   . contradiction
 
