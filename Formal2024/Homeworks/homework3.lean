@@ -43,6 +43,29 @@ example {a : ℝ} (h : 1 < a) : a < a * a := by
   -- This doesn't match the goal exactly, but it does if we can show `a = 1 * a`.
   rw [one_mul]
 
+-- Here is a list of lemmas seen in the lectures plus some new ones that you may find useful
+-- to complete the exercises. Tactics like `linarith` may already know about some of these.
+-- Recall that you can always teach a new lemma to `linarith` by writing `linarith[new_lemma]`
+
+
+#check lt_of_le_of_ne
+#check eq_of_abs_sub_eq_zero
+#check abs_nonneg
+#check abs_neg
+#check abs_add
+#check abs_pos
+#check add_lt_add
+#check abs_mul
+#check div_pos
+#check mul_lt_mul_right
+#check mul_lt_mul_of_pos_left
+#check mul_div_cancel
+#check mul_div_cancel'
+#check ne_of_lt
+#check mul_lt_mul
+#check mul_lt_mul'
+#check mul_lt_mul''
+
 
 -- 1. Prove the following theorem.
 -- Feel free to go back to the relevant workshop sheet, or look in [MIL] or [Tut], if you get stuck!
