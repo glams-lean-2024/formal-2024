@@ -26,7 +26,7 @@ example : (fun x y : ℝ ↦ (x + y) ^ 2) = fun x y : ℝ ↦ x ^ 2 + 2 * x * y 
   ext x y -- The names of the variables are optional
   ring
 
--- Another useful tactic is be `congr`. If the goal is an equality of the form `f x = f y`, it will
+-- Another useful tactic is `congr`. If the goal is an equality of the form `f x = f y`, it will
 -- change the goal to `x = y`.
 example (a b : ℝ) : |a| = |a - b + b| := by
   congr
