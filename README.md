@@ -24,6 +24,8 @@ In order to work on this efficiently, please make a copy of the folder and worki
 
 Each week, when the repository gets updated, you can type `git pull` in your terminal, followed by `lake exe cache get`. This adds the new files into the folder `Formal2024`, which you can then copy manually into your own folder.
 
+If you do work on the Formal2024 folder, and get a merge conflict when pulling the repository, then you should type `git config pull --rebase false` before `git pull`, you probably would need to also `git add --all` and `git commit -m "some message"` before `git pull` if you do get a merge conflict.
+
 ---
 ### Troubleshooting in Codespaces/Gitpod
 
