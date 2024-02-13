@@ -27,7 +27,7 @@ Each week, when the repository gets updated, you can type `git pull` in your ter
 ---
 ### Troubleshooting in Codespaces/Gitpod
 
-- after waiting ~5 minutes for the codespaces to run, you will want to restart any opened file (by doing ctrl / command + shift + P, then you search for somethin along the lines of `Lean4:restart file`)
+- after waiting ~5 minutes for the codespaces to run, you will want to restart any opened file (by doing ctrl / command + shift + P, then you search for something along the lines of `Lean4:restart file`)
 - if it still doesn't work, then you `lake exe cache get` in your terminal
 - if it still doesn't work, then you `lake update` in your terminal
 - if you're still not progressing, please message on Discord `#general` under the `Lean` category
