@@ -31,7 +31,7 @@ jobs:
 
     - name: Configure
       run: |
-        lake exe cache get
+        lake exe cache get && lake update
 
     - name: Build
       run: |
