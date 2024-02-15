@@ -2,7 +2,7 @@
 	"name": "LEAN development environment",
 	"dockerFile": "Dockerfile",
 	"remoteUser": "dev",
-	"postCreateCommand": "git pull && lake exe cache get",
+	"postCreateCommand": "lake exe cache get",
 	"customizations": {
 		"vscode": {
 			"extensions": [
