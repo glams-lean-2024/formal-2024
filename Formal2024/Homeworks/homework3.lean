@@ -1,13 +1,18 @@
 /-
+Copyright (c) 2024 TheLeanTeam. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: The Lean Team
+-/
+import Mathlib.Data.Real.Basic
+import Library
+
+/-!
 # Homework 3: Sequences and convergence
 References: [MIL] Mathematics in Lean, [Tut] Tutorials project.
 Most of this homework is taken from [MIL 3.6]
 -/
 
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic
-
-/-
+/-!
   In this homework you will be proving some basic facts about convergence of sequences of real numbers.
   You will meet some useful tactics along the way!
 

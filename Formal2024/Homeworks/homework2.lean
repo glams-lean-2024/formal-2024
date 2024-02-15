@@ -1,11 +1,16 @@
 /-
+Copyright (c) 2024 TheLeanTeam. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: The Lean Team
+-/
+import Mathlib.Data.Real.Basic
+import Library
+
+/-!
 # Homework 2: Logic
 References: [MIL] Mathematics in Lean, [Tut] Tutorials project.
 Most of this homework is taken from [Tut04]
 -/
-
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic
 
 /-
 The next set of exercises uses divisibility in `ℤ` (beware the `∣` symbol which is
@@ -68,7 +73,7 @@ variable {α : Type*} (P : α → Prop) (Q : Prop)
 
 -- [MIL] S03
 example (h : ¬∃ x, P x) : ∀ x, ¬P x := by
-  aesop
+  sorry
 
 example (h : ∀ x, ¬P x) : ¬∃ x, P x := by
   sorry

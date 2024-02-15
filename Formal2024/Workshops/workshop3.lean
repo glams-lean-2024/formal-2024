@@ -1,10 +1,16 @@
 /-
+Copyright (c) 2024 TheLeanTeam. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: The Lean Team
+-/
+import Library
+
+/-!
   # Logic: Conjunction, Iff, and Disjunction
   References: [MIL] Mathematics in Lean, [Tut] Tutorials project.
   Most of the demonstration section comes [MIL].
 -/
 
-import Mathlib.Tactic
 
 /-!
   # Conjunction

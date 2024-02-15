@@ -1,9 +1,15 @@
 /-
+Copyright (c) 2024 TheLeanTeam. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: The Lean Team
+-/
+import Library
+
+/-!
   # Basics: rewriting, calculating, reasoning forwards and backwards
   References: [MIL] Mathematics in Lean, [Tut] Tutorials project.
   Most of the demonstration section comes [MIL].
 -/
-import Mathlib.Tactic
 
 /-!
   # Rewriting and calculating
@@ -30,7 +36,7 @@ example (a b c d e f : ℝ) (h : a * b = c * d) (h' : e = f) : a * (b * e) = c *
   rw [h', ← mul_assoc, h, mul_assoc]
 
 -- A `calc` block can help to structure a sequence of rewrites.
-example : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
+example (a b : ℝ) : (a + b) * (a + b) = a * a + 2 * (a * b) + b * b :=
   calc
     (a + b) * (a + b) = a * a + b * a + (a * b + b * b) := by
       rw [mul_add, add_mul, add_mul]
@@ -77,7 +83,7 @@ example (x y z : ℝ) (h₀ : x ≤ y) (h₁ : y ≤ z) : x ≤ z := by
 example (a b : ℝ) : a + b + a = 2 * a + b := by
   ring
 
-example (h : 2 * a ≤ 3 * b) (h' : 1 ≤ a) (h'' : d = 2) : d + a ≤ 5 * b := by
+example (a b d : ℝ) (h : 2 * a ≤ 3 * b) (h' : 1 ≤ a) (h'' : d = 2) : d + a ≤ 5 * b := by
   linarith
 
 /-!

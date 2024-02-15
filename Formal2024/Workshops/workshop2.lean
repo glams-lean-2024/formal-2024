@@ -1,13 +1,19 @@
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic
-
-namespace Week2
-
 /-
+Copyright (c) 2024 TheLeanTeam. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: The Lean Team
+-/
+import Mathlib.Data.Real.Basic
+import Library
+
+/-!
   # Logic: Implication, universal quantifier, existential quantifier, negation
   References: [MIL] Mathematics in Lean, [Tut] Tutorials project.
   Most of the demonstration section comes [MIL].
 -/
+
+namespace Week2
+
 
 /-!
   # Implication and universal quantifier
@@ -189,7 +195,7 @@ example : ∃ x : ℝ, 2 * x = 5 :=
 def FnHasUb (f : ℝ → ℝ) :=
   ∃ a, FnUb f a -- `f` has an upper bound
 
-example (ubf : FnHasUb f) (ubg : FnHasUb g) : FnHasUb fun x ↦ f x + g x := by
+example (f g) (ubf : FnHasUb f) (ubg : FnHasUb g) : FnHasUb fun x ↦ f x + g x := by
   rcases ubf with ⟨a, ubfa⟩
   -- Adds new variable `a` (the upper bound) with property `ubfa` (`a` is the upper bound)
   rcases ubg with ⟨b, ubgb⟩
@@ -198,7 +204,7 @@ example (ubf : FnHasUb f) (ubg : FnHasUb g) : FnHasUb fun x ↦ f x + g x := by
 
   -- `intro` and `rcases` can be combined into one command: `rintro`
 
-example : FnHasUb f → FnHasUb g → FnHasUb fun x ↦ f x + g x := by
+example (f g) : FnHasUb f → FnHasUb g → FnHasUb fun x ↦ f x + g x := by
   rintro ⟨a, ubfa⟩ ⟨b, ubgb⟩
   exact ⟨a + b, fnUb_add ubfa ubgb⟩
 
@@ -236,7 +242,7 @@ end
 -- Lean interprets a negation `¬a` as `a → False`, so tactics for implications work
 
 
-example (h : Q) : ¬¬Q := by
+example (Q) (h : Q) : ¬¬Q := by
   intro notQ -- This creates the hypothesis `¬Q` and changes the goal to `False`
   exact notQ h
   -- We treat `¬Q` as an implication, so we can feed it a proof for `Q` to get a proof of `False`
@@ -254,20 +260,20 @@ example (h : Q) : ¬¬Q := by
 
 
 -- The law of excluded middle (in latin, _tertium non datur_) can only be proved by contradiction
-example (h : ¬¬Q) : Q := by
+example (Q) (h : ¬¬Q) : Q := by
   by_contra h'
   exact h h'
 
-example (h : ¬∀ a, ∃ x, f x > a) : FnHasUb f := by
+example (f) (h : ¬∀ a, ∃ x, f x > a) : FnHasUb f := by
   push_neg at h
   -- We can use `push_neg` to rewrite any hypothesis, similarly to `rw`
   exact h
 
-example (h : ¬FnHasUb f) : ∀ a, ∃ x, f x > a := by
+example (f) (h : ¬FnHasUb f) : ∀ a, ∃ x, f x > a := by
   contrapose! h -- `push_neg` automatically simplifies things
   exact h
 
-example (h : 0 < 0) : a > 37 := by
+example (a : ℝ) (h : 0 < 0) : a > 37 := by
   exfalso -- we have a contradiction (`0 < 0`), so we can prove anything we want! First change the goal to false.
   linarith -- Then let `linarith` make the contradiction explicit.
 
