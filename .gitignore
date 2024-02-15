@@ -4,3 +4,7 @@
 /.lake/*
 *.olean
 *.trace
+/MyFiles
+*.ilean
+*.olean.hash
+
