@@ -1,1 +1,0 @@
-{"version":2,"references":{"c:easy_example_lemma":{"usages":[],"definition":[38,6,38,24]},"c:easy_example":{"usages":[[38,33,38,45,"easy_example_lemma",38,0,40,6,38,6,38,24],[43,16,43,28],[78,26,78,38]],"definition":[31,4,31,16]},"c:_example":{"usages":[],"definition":[43,0,43,7]}},"module":"Formal2024.examples"}
