@@ -102,7 +102,7 @@ example : InjOn log { x | x > 0 } := by
     _ = exp (log y) := by rw [e]
     _ = y := by rw [exp_log ypos]
 
--- We also define `range f` as `{x | ∃y, f y = x}`
+-- We also define `range f` as `{ x | ∃ y, f y = x }`
 
 #print range
 
