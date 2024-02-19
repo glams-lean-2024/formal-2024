@@ -37,6 +37,6 @@ jobs:
       run: |
         lake build
   
-    # - name: Save olean cache
-    #   run: |
-    #     lake exe cache pack
+    - name: Save olean cache
+      run: |
+        lake exe cache pack

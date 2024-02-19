@@ -4,7 +4,7 @@ open Lake DSL
 package «Formal2024» {
   leanOptions := #[
     ⟨`pp.unicode.fun, true⟩,
-    ⟨`pp.proofs.withType, false⟩,
+    -- ⟨`pp.proofs.withType, false⟩,
     ⟨`autoImplicit, false⟩,
     ⟨`relaxedAutoImplicit, false⟩
   ]
