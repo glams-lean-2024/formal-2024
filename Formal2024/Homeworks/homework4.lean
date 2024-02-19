@@ -104,7 +104,7 @@ example : InjOn log PosReals := by
     _ = exp (log y) := by rw [e]
     _ = y := by rw [exp_log ypos]
 
--- `range f` is defined as the set `{ x | ∃ y, f y = x }`
+-- `range f` is defined as the set `{ x : ℝ | ∃ y : ℝ, f y = x }`
 
 #print range
 
