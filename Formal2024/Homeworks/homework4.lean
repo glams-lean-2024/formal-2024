@@ -93,7 +93,9 @@ open Set Real
 
 #print InjOn
 
-example : InjOn log { x | x > 0 } := by
+def PosReals : Set ℝ := { x : ℝ | 0 < x }
+
+example : InjOn log PosReals := by
   intro x xpos y ypos
   intro e
   -- `log x = log y`
@@ -106,7 +108,7 @@ example : InjOn log { x | x > 0 } := by
 
 #print range
 
-example : range exp = { y | y > 0 } := by
+example : range exp = PosReals := by
   ext y; constructor
   · rintro ⟨x, rfl⟩
     apply exp_pos
@@ -119,21 +121,22 @@ example : range exp = { y | y > 0 } := by
 #check sqrt_nonneg
 #check pow_nonneg
 
+def NonNegReals : Set ℝ := { x : ℝ | 0 ≤ x }
 
 -- 8
-example : InjOn sqrt { x | x ≥ 0 } := by
+example : InjOn sqrt NonNegReals := by
   sorry
 
 -- 9
-example : InjOn (fun x ↦ x ^ 2) { x : ℝ | x ≥ 0 } := by
+example : InjOn (fun x ↦ x ^ 2) NonNegReals := by
   sorry
 
 -- 10
-example : sqrt '' { x | x ≥ 0 } = { y | y ≥ 0 } := by
+example : sqrt '' NonNegReals = NonNegReals := by
   sorry
 
 -- 11
-example : (range fun x ↦ x ^ 2) = { y : ℝ | y ≥ 0 } := by
+example : (range fun x ↦ x ^ 2) = NonNegReals := by
   sorry
 
 end
