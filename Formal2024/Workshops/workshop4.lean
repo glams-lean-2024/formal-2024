@@ -40,8 +40,7 @@ section
 #check Type 1
 --#check Type 33 -- Well, almost infinite
 -- **Note:** However, you can manually increase the default `maxUniverseOffset`,
---   but you should not mess around with such options
---   unless you know for sure what you're doing!
+--   but you should not mess around with such options unless you know for sure what you're doing!
 set_option maxUniverseOffset 33
 #check Type 33
 
@@ -145,7 +144,7 @@ example : (s \ t) \ u ⊆ s \ (t ∪ u) := by
   constructor
   · exact xs
   intro xtu
-  -- x ∈ t ∨ x ∈ u
+  -- `x ∈ t ∨ x ∈ u`
   rcases xtu with xt | xu
   · exact xnt xt
   . exact xnu xu
@@ -219,8 +218,8 @@ The set `{ y | P y }` is defined as the function `fun y ↦ P y` and `x ∈ { y 
 
 example : 1 ∈ { x : ℕ | x > 0} := by norm_num
 
--- The empty set (`\empty`) is the function `fun y ↦ False`
--- The universe set are the function `fun y ↦ True`
+-- The empty set `∅` (you get this by typing `\empty`) is the function `fun y ↦ False`
+-- The universe set is the function `fun y ↦ True`
 
 example (x : ℕ) (h : x ∈ (∅ : Set ℕ)) : False :=
   h
