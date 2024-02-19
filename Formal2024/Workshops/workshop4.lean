@@ -238,7 +238,7 @@ variable (s t : Set ℕ)
 def evens : Set ℕ :=
   { n | Even n }
 
-def odds : Set ℕ :=
+def oddSet : Set ℕ :=
   { n | ¬Even n }
 
 #print Prime
