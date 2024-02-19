@@ -162,7 +162,7 @@ example : (s \ t) \ u ⊆ s \ (t ∪ u) := by
 -- Two sets are equal when they have the same elements. This is called "extensionality"
 -- You can use it by typing `ext _`
 -- This is the same tactic used to prove functions are equal if they agree on all inputs
--- When we define a structure with extensionality-like property, we can mark it wit `@[ext]`
+-- When we define a structure with extensionality-like property, we can mark it with `@[ext]`
 -- so that Lean adds an appropriate extensionality lemma to the `ext` tactic.
 -- More on this in the next lectures.
 
