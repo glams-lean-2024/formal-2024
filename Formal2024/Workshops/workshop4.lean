@@ -86,6 +86,8 @@ def setNat : Set ℕ := univ -- This is the set of all natural numbers
 -- can only have one type, i.e. if `a : α` and `a : β`, then `α` and `β` are definitionally equal
 -- To make sense of things like subsets, intersections, union, complements, we need `Set`
 
+-- #check ((1 : ℤ) : ℕ) for example, this give an error message.
+
 end
 
 section
@@ -214,7 +216,8 @@ The main difference between sets and types is the predicate `∈`. In fact, in L
 with its `∈` predicate:
 
 `Set α` is defined as `α → Prop`. If `s : Set α` and `a : α`, then `a ∈ s` is defined as `s a`.
-The set `{ y | P y }` is defined as the function `fun y ↦ P y` and `x ∈ { y | P y }` means `P x`.
+The set `{ y | P y }` is defined as the map `fun y ↦ P y` and `h : x ∈ { y | P y }` is `h : P x`.
+If for some reason Lean fails to unfold the definition, you can use `h.out` or `rw[mem_setOf]`
 -/
 --
 
