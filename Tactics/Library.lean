@@ -4,9 +4,9 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: The Lean Team
 -/
 import Aesop
-import TruthTable
 import AutograderLib
 import Mathlib.Tactic
+-- import TruthTable
 -- import Paperproof
 
 
