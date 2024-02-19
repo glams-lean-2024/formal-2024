@@ -75,7 +75,7 @@ def setNat : Set ℕ := univ -- This is the set of all natural numbers
 
 -- Sets come with a predicate: `∈` (`\in` or `\mem`). Its negation is `∉` (`\notin`)
 
-#check ( 1 ∈ setNat ) -- This is in `Prop`
+#check (1 ∈ setNat) -- This is in `Prop`
 #check ( 1 : ℕ )     -- This is not
 
 -- `(1 : ℕ)` is a statement in type theory, but not an element in `Prop`, our model of
