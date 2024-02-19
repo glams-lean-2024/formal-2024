@@ -38,7 +38,7 @@ variable (a b δ : ℝ)
 -- Lean doesn't care if a Proposition is true or false, as long as it is well-formed
 #check 2+2=5
 #check 1=1
-#check == -- Delete this line to get rid of the error message
+-- #check == -- Delete this line to get rid of the error message
 
 -- Being of the type of a Proposition means being a proof
 variable (h₀ : 0 < δ) (h₁ : δ ≤ 1)

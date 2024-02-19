@@ -89,7 +89,7 @@ section
 
 open Set Real
 
--- `InjOn f s` is a predicate that means "`f` is injective on `s`"
+-- `InjOn f s` is a predicate that means the function `f` is injective on `s`
 
 #print InjOn
 
@@ -102,7 +102,7 @@ example : InjOn log { x | x > 0 } := by
     _ = exp (log y) := by rw [e]
     _ = y := by rw [exp_log ypos]
 
--- We also define `range f` as `{ x | ∃ y, f y = x }`
+-- `range f` is defined as the set `{ x | ∃ y, f y = x }`
 
 #print range
 
