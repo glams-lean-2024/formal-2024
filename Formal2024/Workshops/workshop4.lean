@@ -91,7 +91,7 @@ section
 variable {α : Type*}
 variable (s t u : Set α)
 
--- We write `⊆` (`\ss` or `\sub`) for subset, `∩` (`\i` or `\cap`) for intersection,
+-- We write `⊆` (`\ss` or `\subseteq`) for subset, `∩` (`\i` or `\cap`) for intersection,
 -- `∪` (`\u` or `\cup`) for union, and `\` (typed as `\`) for set difference.
 
 -- We can also use the notation `{ y | P y }`, where `P` is a predicate, for the set of
