@@ -92,7 +92,7 @@ variable {α : Type*}
 variable (s t u : Set α)
 
 -- We write `⊆` (`\ss` or `\subseteq`) for subset, `∩` (`\i` or `\cap`) for intersection,
--- `∪` (`\u` or `\cup`) for union, and `\` (typed as `\setdifference`) for set difference.
+-- `∪` (`\u` or `\cup`) for union, and `\` (typed as `\\`) for set difference.
 
 -- We can also use the notation `{ y | P y }`, where `P` is a predicate, for the set of
 -- elements satisfying `P`
@@ -106,8 +106,9 @@ variable (s t u : Set α)
 example (h : s ⊆ t) : s ∩ u ⊆ t ∩ u := by
   simp only [subset_def, inter_def, inter_def, mem_setOf]
   rw [subset_def] at h
-  -- We can use `simp only` or `rw` to unfold the definitions
+  -- We can use `simp only` or `rw` or `simp_rw` to unfold the definitions
   -- `simp only` is a more powerful `rw`, that also works under quantifiers
+  -- `simp_rw` is similar to `simp only`, but uses the lemmas in the given order
   -- Now we can proceed as usual
   rintro x ⟨xs, xu⟩
   exact ⟨h x xs, xu⟩
