@@ -82,7 +82,8 @@ def setNat : Set ℕ := univ -- This is the set of all natural numbers
 -- `(1 : ℕ)` is a statement in type theory, but not an element in `Prop`, our model of
 -- propositional logic inside type theory.
 
--- Another big difference: if `a : α` and `a : β`, then `α` and `β` are definitionally equal
+-- Another big difference: objects can be elements of more than one set, while in Lean terms
+-- can only have one type, i.e. if `a : α` and `a : β`, then `α` and `β` are definitionally equal
 -- To make sense of things like subsets, intersections, union, complements, we need `Set`
 
 end
