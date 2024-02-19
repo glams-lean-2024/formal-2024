@@ -29,7 +29,7 @@ example : f ⁻¹' (u ∩ v) = f ⁻¹' u ∩ f ⁻¹' v := by
   rfl
 
 -- If `s` is a set of elements of type `α`, the library also defines `image f s`, written `f '' s`,
--- to be `{y | ∃ x, x ∈ s ∧ f x = y}`. So a hypothesis `y ∈ f '' s` decomposes to a triple
+-- to be `{ y | ∃ x, x ∈ s ∧ f x = y }`. So a hypothesis `y ∈ f '' s` decomposes to a triple
 -- `⟨x, xs, xeq⟩` with `x : α` satisfying the hypotheses `xs : x ∈ s` and `xeq : f x = y`.
 -- The `rfl` tag in the `rintro` tactic was made precisely for this sort of situation.
 
