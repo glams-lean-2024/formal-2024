@@ -10,10 +10,6 @@ package «Formal2024» {
   ]
 }
 
-@[default_target]
-lean_lib «Formal2024» {
-  globs := #[.submodules `Formal2024]
-}
 
 
 lean_lib «Library» {
@@ -32,6 +28,11 @@ lean_lib «MIL» {
 lean_lib «Tutorials» {
   srcDir:= "References"
 }
+
+@[default_target]
+lean_lib «Formal2024» where -- {
+-- globs := #[.submodules `Formal2024]
+-- }
 
 require mathlib from git "https://github.com/leanprover-community/mathlib4.git"
 -- require Paperproof from git "https://github.com/Paper-Proof/paperproof.git"@"main"/"lean"
