@@ -21,7 +21,7 @@ variable (u v : Set β)
 open Function
 
 -- If `f : α → β` is a function and `p` is a set of elements of type `β`,
--- the library defines `preimage f p`, written `f ⁻¹' p`, to be `{x | f x ∈ p}`.
+-- the library defines `preimage f p`, written `f ⁻¹' p`, to be `{ x | f x ∈ p }`.
 
 
 example : f ⁻¹' (u ∩ v) = f ⁻¹' u ∩ f ⁻¹' v := by
