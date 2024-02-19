@@ -216,7 +216,7 @@ The set `{ y | P y }` is defined as the function `fun y ↦ P y` and `x ∈ { y 
 -/
 --
 
-example : 1 ∈ { x : ℕ | x > 0} := by norm_num
+example : 1 ∈ { x : ℕ | 0 < x } := by norm_num
 
 -- The empty set `∅` (you get this by typing `\empty`) is the function `fun y ↦ False`
 -- The universe set is the function `fun y ↦ True`
