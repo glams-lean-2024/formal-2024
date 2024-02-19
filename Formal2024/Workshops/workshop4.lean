@@ -39,7 +39,9 @@ section
 #check Type -- Lean has a countably infinite hierarchy of type of types (of types of types...)
 #check Type 1
 --#check Type 33 -- Well, almost infinite
--- unless you manually increase the `maxUniverseOffset`
+-- **Note:** However, you can manually increase the default `maxUniverseOffset`,
+--   but you should not mess around with such options
+--   unless you know for sure what you're doing!
 set_option maxUniverseOffset 33
 #check Type 33
 
