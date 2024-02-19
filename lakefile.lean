@@ -34,6 +34,6 @@ lean_lib «Tutorials» {
 }
 
 require mathlib from git "https://github.com/leanprover-community/mathlib4.git"
-require Paperproof from git "https://github.com/Paper-Proof/paperproof.git"@"main"/"lean"
-require autograder from git "https://github.com/robertylewis/lean4-autograder-main" @ "master"
+-- require Paperproof from git "https://github.com/Paper-Proof/paperproof.git"@"main"/"lean"
+-- require autograder from git "https://github.com/robertylewis/lean4-autograder-main" @ "master"
 require proofwidgets from git "https://github.com/EdAyers/ProofWidgets4"@"v0.0.28"
