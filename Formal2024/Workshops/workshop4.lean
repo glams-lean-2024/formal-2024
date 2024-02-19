@@ -125,10 +125,13 @@ example : s ∩ (t ∪ u) ⊆ s ∩ t ∪ s ∩ u := by
   have xtu : x ∈ t ∪ u := hx.2    -- Union works like an `∨`
   rcases xtu with xt | xu
   · left
-    show x ∈ s ∩ t
+    show x ∈ s ∧ x ∈ t
+-- `show` is another tactic for human readability (Lean does not need it)
+-- We declare the type of the goal we are going to prove.
+-- It can be used to rewrite a goal to something definitionally equal.
     exact ⟨xs, xt⟩
   . right
-    show x ∈ s ∩ u
+    show x ∈ s ∧ x ∈ u
     exact ⟨xs, xu⟩
   tada
 
@@ -142,8 +145,8 @@ example : (s \ t) \ u ⊆ s \ (t ∪ u) := by
   intro xtu
   -- x ∈ t ∨ x ∈ u
   rcases xtu with xt | xu
-  · show False; exact xnt xt
-  . show False; exact xnu xu
+  · exact xnt xt
+  . exact xnu xu
   tada
 
 -- This is quite lengthy. We can use `rintro` to shorten the proof
@@ -156,6 +159,11 @@ example : (s \ t) \ u ⊆ s \ (t ∪ u) := by
 
 -- Two sets are equal when they have the same elements. This is called "extensionality"
 -- You can use it by typing `ext _`
+-- This is the same tactic used to prove functions are equal if they agree on all inputs
+-- When we define a structure with extensionality-like property, we can mark it wit `@[ext]`
+-- so that Lean adds an appropriate extensionality lemma to the `ext` tactic.
+-- More on this in the next lectures.
+
 
 example : s ∩ t = t ∩ s := by
   ext x -- You can give the variable a name by typing it instead of `_`
