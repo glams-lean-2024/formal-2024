@@ -10,13 +10,18 @@ package «Formal2024» {
   ]
 }
 
-lean_lib Library {
-  srcDir := "Tactics"
-}
-
 @[default_target]
 lean_lib «Formal2024» {
   globs := #[.submodules `Formal2024]
+}
+
+
+lean_lib «Library» {
+  srcDir:= "Tactics"
+}
+
+lean_lib «TruthTable» {
+  srcDir:= "Tactics"
 }
 
 
