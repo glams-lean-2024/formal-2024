@@ -235,7 +235,7 @@ section
 
 variable (s t : Set ℕ)
 
-def evens : Set ℕ :=
+def evenSet : Set ℕ :=
   { n | Even n }
 
 def oddSet : Set ℕ :=
