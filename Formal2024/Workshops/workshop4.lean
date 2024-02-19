@@ -3,15 +3,14 @@ Copyright (c) 2024 TheLeanTeam. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: The Lean Team
 -/
-
-/-
-  # Sets and Functions
-  References: [MIL] Mathematics in Lean, [Tut] Tutorials project.
-  Most of the demonstration section comes [MIL].
--/
-
 import Library
 open Set
+
+/-!
+  # Sets and Functions
+  References: [MIL] Mathematics in Lean, [Tut] Tutorials project.
+  Most of the demonstration section comes from [MIL].
+-/
 
 section
 
@@ -19,7 +18,6 @@ section
 variable {α : Type*}
 
 -- We denote by `Set α` the type of sets of elements of `α`
-
 variable (s t u : Set α)
 #check s
 
@@ -41,6 +39,9 @@ section
 #check Type -- Lean has a countably infinite hierarchy of type of types (of types of types...)
 #check Type 1
 --#check Type 33 -- Well, almost infinite
+-- unless you manually increase the `maxUniverseOffset`
+set_option maxUniverseOffset 33
+#check Type 33
 
 #check Prop → ℕ -- We can construct types of functions between types
 #check Type 1 → Type 2
@@ -50,14 +51,14 @@ section
 variable {α β : Type*} -- With the asterisk we are leaving the level of the type generic
 #check α
 #check β
-variable (f : α → β )
-variable (a : α )
+variable (f : α → β)
+variable (a : α)
 
 #check f a -- We can apply functions, getting the expected outcome
 
-def My_and (P : Prop) : Prop := P ∧ P
+def myAnd (P : Prop) : Prop := P ∧ P
 
-#check fun (P: Prop) ↦ My_and P -- We can perform abstractions to create functions
+#check fun (P: Prop) ↦ myAnd P -- We can perform abstractions to create functions
 
 
 -- Apart from `∀` (which we discussed is equivalent to functions) everything else is constructed
@@ -70,11 +71,11 @@ section
   # How is a type different from a set?
 -/
 
-def Setℕ : Set ℕ := univ -- This is the set of all natural numbers
+def setNat : Set ℕ := univ -- This is the set of all natural numbers
 
 -- Sets come with a predicate: `∈` (`\in` or `\mem`). Its negation is `∉` (`\notin`)
 
-#check ( 1 ∈ Setℕ ) -- This is in `Prop`
+#check ( 1 ∈ setNat ) -- This is in `Prop`
 #check ( 1 : ℕ )     -- This is not
 
 -- `( 1 : ℕ )` is a statement in type theory, but not an element in `Prop`, our model of
