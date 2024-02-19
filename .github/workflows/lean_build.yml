@@ -31,12 +31,12 @@ jobs:
 
     - name: Configure
       run: |
-        lake exe cache get && lake update
+        lake exe cache get
 
     - name: Build
       run: |
         lake build
-
+  
     - name: Save olean cache
       run: |
         lake exe cache pack

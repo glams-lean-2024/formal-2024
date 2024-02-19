@@ -1,2 +1,9 @@
+import Library
 import Formal2024.Homeworks.homework1
+import Formal2024.Homeworks.homework2
+import Formal2024.Homeworks.homework3
+import Formal2024.Homeworks.homework4
 import Formal2024.Workshops.workshop1
+import Formal2024.Workshops.workshop2
+import Formal2024.Workshops.workshop3
+import Formal2024.Workshops.workshop4

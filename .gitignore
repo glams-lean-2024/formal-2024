@@ -1,10 +1,10 @@
 /build
-# /lake-packages/*
-# /.lake
-# /.lake/*
-# *.olean
-# *.trace
+/lake-packages/*
+/.lake
+/.lake/*
+*.olean
+*.trace
 /MyFiles
-# *.ilean
-# *.olean.hash
+*.ilean
+*.olean.hash
 

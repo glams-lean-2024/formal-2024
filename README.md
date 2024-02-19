@@ -2,6 +2,13 @@
 
 This is the repository for the GlaMS course on Formalising Mathematics in Lean. The course content (workshop sheets and homeworks) is located in the folder `Formal2024`. There is also a `References` folder.
 
+## Week 4:
+
+Please type the following in your terminal to update the repository properly:
+```terminal
+git pull && yes | rm -r .lake && lake update && lake exe cache get
+```
+
 ## How to work on this
 
 ### Starting the repository
@@ -12,7 +19,7 @@ This can be done using Codespaces:<br> [![Open in GitHub Codespaces](https://git
 Or using Gitpod:<br> [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/glams-lean-2024/formal-2024)
 
 #### Locally
-Installing Lean on your computer following these [instructions](https://leanprover-community.github.io/get_started.html).
+Install Lean on your computer following these [instructions](https://leanprover-community.github.io/get_started.html).
 Then you can clone this repository to your own computer by writing `git clone https://github.com/glams-lean-2024/formal-2024.git` in your terminal, followed by `lake exe cache get`.
 
 ---

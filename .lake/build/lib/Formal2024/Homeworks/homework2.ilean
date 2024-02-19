@@ -1,1 +1,0 @@
-{"version":2,"references":{"c:_example":{"usages":[],"definition":[26,0,26,7]},"c:Real":{"usages":[[56,16,56,17],[56,20,56,21]],"definition":null},"c:Int":{"usages":[[23,18,23,19]],"definition":null},"c:Function.Surjective":{"usages":[[59,13,59,23],[59,35,59,45],[65,14,65,24],[65,34,65,44],[65,50,65,60]],"definition":null}},"module":"Formal2024.Homeworks.homework2"}
