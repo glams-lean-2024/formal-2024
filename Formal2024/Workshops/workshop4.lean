@@ -245,7 +245,7 @@ def oddSet : Set ℕ :=
 #print Nat.Prime
 
 -- 6
-example : { n | Nat.Prime n } ∩ { n | n > 2 } ⊆ { n | ¬Even n } := by
+example : { n | Nat.Prime n } ∩ { n | n > 2 } ⊆ oddSet := by
   sorry
 
 -- The notation `∀ x ∈ t` means `∀ x, x ∈ t → ... `, and `∃ x ∈ t` means `∃ x, x ∈ t → ... `
