@@ -20,9 +20,9 @@ lean_lib «Library» {
   srcDir:= "Tactics"
 }
 
-lean_lib «TruthTable» {
-  srcDir:= "Tactics"
-}
+-- lean_lib «TruthTable» {
+--  srcDir:= "Tactics"
+-- }
 
 
 lean_lib «MIL» {
