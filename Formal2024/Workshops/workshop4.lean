@@ -254,6 +254,8 @@ example : { n | Nat.Prime n } ∩ { n | n > 2 } ⊆ oddSet := by
 
 -- The notation `∀ x ∈ t` means `∀ x, x ∈ t → ... `, and `∃ x ∈ t` means `∃ x, x ∈ t → ... `
 
+
+variable (ssubt : s ⊆ t)
 -- 7
 example (h₀ : ∀ x ∈ t, ¬Even x) (h₁ : ∀ x ∈ t, Prime x) : ∀ x ∈ s, ¬Even x ∧ Prime x := by
   sorry
