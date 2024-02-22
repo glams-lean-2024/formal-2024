@@ -43,7 +43,13 @@ theorem myEven_pow : ∀ m n, myEven m → myEven (m ^ n) := sorry
 
 theorem myOdd_pow : ∀ m n, myOdd m → myOdd (m ^ n) := sorry
 
-/-! # Part 2 : uniqueness of natural numbers with `≤` -/
+/-! # Part 2 : uniqueness of natural numbers with `≤`
+
+  `∃! x` is notation for "there exists a unique `x`".
+  This is equivalent to `∃ x, p x ∧ ∀ y, p y → y = x`.
+
+  This can be confusing when involving more variables, so we will prove the following.
+-/
 
 theorem Nat.exists_unique_le : ∃! n m : Nat, m ≤ n := sorry
 
@@ -53,21 +59,32 @@ theorem Nat.exists_unique_le : ∃! n m : Nat, m ≤ n := sorry
 theorem existence_implies_everything_iff {α : Type*} (r : α → Prop) :
   (∃ x, (r x → ∀ y, r y)) ↔ Nonempty α := sorry
 
+section Part_4
 /-! # Part 4 : non-equal types
 
-  we will prove the following lemmas and theorems about non-equal types.
+Firstly, some definitions:
+* `Cardinal` is a structure that represents the cardinality of a type.
+  We can use it to compare the cardinality of two types.
+  In order to use the notation `#α`, which exactly means "the cardinality of `α`", we need to `open Cardinal` first.
+* `Countable α` is defined as `Prop`, which is determined by whether there exists an injective map `α → ℕ`.
 
-  [-] `ne_types_of_ne_cardinal`: we have non-equal types given their cardinality is non-equal
 
-  [-] `ne_types_of_countable_uncountable`: if a type is countable and the other isn't, then they are non-equal
+We will prove the following lemmas and theorems about non-equal types.
 
-  [-] `ne_types_of_different_property`: generalising the above two,
+* `ne_types_of_ne_cardinal`: we have non-equal types given their cardinality is non-equal
+
+* `ne_types_of_countable_uncountable`: if a type is countable and the other isn't, then they are non-equal
+
+* `ne_types_of_different_property`: generalising the above two,
     we get non-equal types given there is a different property
 
-  an easy example of all of this is the following.
-  [-] `exists_ne_types`: there exists two types that are non-equal -/
+an easy example of all of this is the following.
+* `exists_ne_types`: there exists two types that are non-equal
+-/
 
-lemma ne_types_of_ne_cardinal {α β : Type} (h : Cardinal.mk α ≠ Cardinal.mk β) : α ≠ β := sorry
+open Cardinal
+
+lemma ne_types_of_ne_cardinal {α β : Type} (h : #α ≠ #β) : α ≠ β := sorry
 
 lemma ne_types_of_countable_uncountable {α β : Type}
   (hα : Countable α) (hβ : Uncountable β) : α ≠ β := sorry
@@ -76,6 +93,8 @@ theorem ne_types_of_different_property {α β : Type}
   (p : Type → Prop) (hα : p α) (hβ : ¬ p β) : α ≠ β := sorry
 
 example : ∃ α β : Type, α ≠ β := sorry
+
+end Part_4
 
 /-! # Part 5 : Nat.cast is not surjective -/
 
