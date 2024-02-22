@@ -160,7 +160,7 @@ example : sqrt '' NonNegReals = NonNegReals := by
   intro ypos
   use y ^ 2
   rw [sqrt_sq ypos]
-  refine ⟨sq_nonneg y, rfl⟩
+  exact ⟨sq_nonneg y, rfl⟩
 
 -- 11
 example : (range fun x ↦ x ^ 2) = NonNegReals := by
