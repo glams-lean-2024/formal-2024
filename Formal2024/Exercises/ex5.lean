@@ -67,6 +67,7 @@ Firstly, some definitions:
   We can use it to compare the cardinality of two types.
   In order to use the notation `#α`, which exactly means "the cardinality of `α`", we need to `open Cardinal` first.
 * `Countable α` is defined as `Prop`, which is determined by whether there exists an injective map `α → ℕ`.
+* `Uncountable α` is defined as `¬ (Countable α)`.
 
 
 We will prove the following lemmas and theorems about non-equal types.
