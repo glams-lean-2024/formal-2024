@@ -61,8 +61,7 @@ lemma Nat.exists_unique_le : ∃! n m : Nat, m ≤ n := by
   sorry
 
 
-/-
-  ## Part 3 : Types and logic
+/-! # Part 3 : Types and logic
   Here we examine some interesting interactions between types and logic.
 -/
 
@@ -84,8 +83,7 @@ lemma existence_implies_everything_iff {α : Type*} (r : α → Prop) :
 -- You can think of `Nonempty` as a special case of `Exists` (`∃`), where the predicate is trivial.
 
 
-/-
-  ## Part 4 : Type equality and cardinality
+/-! # Part 4 : Type equality and cardinality
   For this question, we will explore when two types can be the same in two different ways.
   One of them is equality, which is very strict. Another is having the same cardinality.
 -/
@@ -146,8 +144,7 @@ lemma ne_types_of_countable_uncountable {α β : Type}
 end
 
 
-/-
-  ## Q4: Nat.cast is not surjective
+/-! # Part 5 : Nat.cast is not surjective
   For this last question, we will prove that the obvious inclusion `ℕ → ℤ` is not surjective.
   In Lean, this inclusion is called `Nat.cast`.
 -/
