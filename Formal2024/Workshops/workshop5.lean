@@ -181,6 +181,25 @@ example {α : Type} (p : α → Prop) : ¬ MyExists p ↔ ∀ x, ¬ p x := by
 
 end
 
+-- In mathlib, some types are provided with more than just one induction principle. For example,
+-- for `ℕ` we have things like
+#check Nat.strong_induction_on
+#check Nat.case_strong_induction_on
+#check Nat.le_induction
+#check Nat.subInduction
+#check Nat.mod.inductionOn
+
+-- To use these, we give the `induction'` tactic a principle to use,
+-- e.g. `using Nat.strong_induction_on`.
+example {n : ℕ} (ge2 : 2 ≤ n) : ∃ p, Nat.Prime p ∧ p ∣ n := by
+  induction' n using Nat.strong_induction_on with n ih
+  by_cases hn : Nat.Prime n
+  · use n, hn
+  · rcases Nat.exists_dvd_of_not_prime2 ge2 hn with ⟨m, mdvdn, mge2, mltn⟩
+    rcases ih m mltn mge2 with ⟨p, hp, pdvdm⟩
+    use p, hp
+    exact Nat.dvd_trans pdvdm mdvdn
+
 section
 
 /-
