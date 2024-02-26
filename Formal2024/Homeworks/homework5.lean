@@ -24,6 +24,7 @@ def fac : ℕ → ℕ
   | 0 => 1
   | n + 1 => (n + 1) * fac n
 
+-- Start by proving that `n ≤ n!`.
 lemma le_fac_self (n : ℕ) : n ≤ fac n := sorry
 
 -- Now prove that any natural number between `1` and `n` divides `fac n`.
@@ -92,10 +93,10 @@ example : 0 :: [] = List.cons 0 List.nil := rfl
 #check List.concat
 #eval List.concat [0] 1
 
--- Use `List.concat` to recursively a function takes a list and reverses it.
+-- Use `List.concat` to recursively define a function takes a list and reverses it.
 def reverse : List α → List α
-  | [] => []
-  | head :: tail => List.concat (reverse tail) head
+  | [] => sorry
+  | head :: tail => sorry
 
 
 -- `List` has the structure of a `Setoid`, where two lists are related if they are permuations
@@ -131,13 +132,14 @@ lemma reverse_perm (l : List α) : List.Perm l (reverse l) := sorry
 -- You will want to use `Quot.sound`.
 lemma reverse_multiset (l : List α) : Multiset.ofList l = Multiset.ofList (reverse l) := sorry
 
+end Hidden
 
--- Finally, we can talk about `Finset`. It is a structure (inductive type with on constructor)
+-- Finally, we can talk about `Finset`. It is a structure (inductive type with one constructor)
 -- that packages a multiset with a proof that it has no duplicates.
 #check Finset
 
--- The most common `Finset`s are ranges of natural numbers (think indexing sets of summations).
--- This are constructed with `Finset.range`.
+-- The most common `Finset`s are ranges of natural numbers (e.g., as indexing sets of summations).
+-- These are constructed with `Finset.range`.
 #eval Finset.range 5
 
 -- The good news is that there are a lot of lemmas about `Finset` that let us forget its
@@ -146,14 +148,11 @@ lemma reverse_multiset (l : List α) : Multiset.ofList l = Multiset.ofList (reve
 open BigOperators
 
 -- For example, try to prove the following well-known formula.
--- The notation for a sum should be self explanatory, otherwise `ctrl/cmd + click` or hover over it
--- to see a helpful documenation comment.
+-- The notation for a sum should be self-explanatory, otherwise `ctrl/cmd + click` or hover over it
+-- to see a helpful documentation comment.
 
 -- You will want to use things like:
 #check Finset.sum_range_zero
 #check Finset.sum_range_succ
 
 lemma sum_range (n : ℕ) : ∑ i in Finset.range n, (↑i : ℚ) = ↑n * (n - 1) / 2 := sorry
-
-
-end Hidden
