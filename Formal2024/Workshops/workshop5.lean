@@ -17,11 +17,43 @@ import Mathlib.GroupTheory.Coset
   In the type theory of Lean (a version of the Calculus of Inductive Constructions),
   there are only a few types that whose existence is axiomatic. These are:
   - The type universes `Prop`, `Type`, `Type 1`, `Type 2`, ...
-  - The (dependent) function type `(x : α) → β x`.
+  - The (dependent) function type `(x : α) → β x` for `α : Type*` and `β : α → Type*`.
 
   (Almost) every other type is built up from these and the construction of inductive types.
-  This includes the familiar `∧`, `∨` and `∃` types.
+  This includes the familiar `∧`, `∨`, `∃`, and `↔` types.
 -/
+
+section
+
+-- Before me dive into inductive types. Let's revisit those two basic types we just mentioned.
+-- We have the hiearchy of type universes indexed by the natural numbers:
+#check Type 0 -- = Type
+#check Type 1
+#check Type 2
+-- These can can also be written as `Sort 1` (= `Type 0`), `Sort 2` (= `Type 1`), etc.
+-- In this notation `Sort 0` is the same as `Prop`.
+#check Sort 0
+#check Sort 1
+
+-- `Prop` is a rather special type. A term of type `Prop` is a proposition `p : Prop`, which
+-- we think of as being either true or false. Any two terms of type `p` are considered
+-- definitionally equal by Lean. This is the aximo of *proof irrelevance*.
+example {p : Prop} (h1 h2 : p) : h1 = h2 := rfl
+
+-- The function type also deserves some more attention. Lean is what is called a dependently
+-- typed language, which means that it allows for *dependent functions*. These are functions
+-- where the type of the output can depend on the value of the input.
+
+-- This is a normal function
+#check fun (n : ℕ) => n + 1
+-- This is a dependent function
+#check fun (n : ℕ) => Vector.replicate n (1 : ℝ)
+
+-- We've been using dependent functions all this time without noticing! For example, every
+-- time we write a `∀` statement, we are writing a dependent function type.
+#check ∀ (n : ℕ), 0 ≤ n
+
+end
 
 section
 
