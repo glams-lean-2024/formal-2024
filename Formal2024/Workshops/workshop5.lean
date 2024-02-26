@@ -9,7 +9,7 @@ import Mathlib.GroupTheory.Coset
 /-!
   # Inductive types, subtypes and quotient types
   References: [MIL] Mathematics in Lean, [Tut] Tutorials project.
-  This week we will follow the textbook [TPL] Theorem Proving in Lean 4, which can
+  This week we will also use the textbook [TPL] Theorem Proving in Lean 4, which can
   be found at https://leanprover.github.io/theorem_proving_in_lean4/
 -/
 
@@ -341,5 +341,8 @@ lemma even_of_succ_odd (n : ℕ) : even n → odd (n + 1) := by
 lemma even_or_odd (n : ℕ) : even n ∨ odd n := by
   sorry
 
+-- If you would like some more practice, come up with your own lemmas about how `even` and `odd`
+-- interact with other operations on the natural numbers. For example, you could prove that the sum
+-- of two even numbers is even, or that the sum of an even and an odd number is odd.
 
 end
