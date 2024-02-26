@@ -184,7 +184,7 @@ lemma Nat.exists_unique_le : ∃! n m : Nat, m ≤ n := by
 -/
 
 -- Lean has an inductive type (class) called `Nonempty`. It represents when a type has at least
--- one term. You can `Ctrl+Click` on `Nonempty` to see its definition.
+-- one term. You can `ctrl/cmd + click` on `Nonempty` to see its definition.
 #check Nonempty
 
 -- Given that it is an inductive type, do you see how you could use and construct a term of
@@ -229,7 +229,7 @@ section
   cardinality. Two types have the same cardinality if there exists a bijection between them.
 -/
 
--- `Ctrl+Click` through to examine the definitions.
+-- `ctrl/cmd + click` through to examine the definitions.
 #check Cardinal
 -- Note how `Nonempty` is used in the definition of `Cardinal`.
 

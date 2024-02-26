@@ -49,7 +49,7 @@ namespace MyBool
 
 -- To use this type, we can use *pattern matching*. (Pay attention to the syntax!)
 def and : MyBool → MyBool → MyBool
-  | true, true => false
+  | true, true => true
   | _, _ => false
 
 -- We can also use tactics like `rcases` and `rintro`:
@@ -159,10 +159,10 @@ example (h : MyExists (fun x : ℕ ↦ x < 0)) : False := by
   rcases h with ⟨n, hn⟩
   norm_num at hn
 
--- Inductive types with only one constructor all called *structures*. We will learn more
+-- Inductive types with only one constructor are called *structures*. We will learn more
 -- about these next week!
 
--- If you are curious, you can `Ctrl+Click` on these to see how they are defined in Lean as
+-- If you are curious, you can `ctrl/cmd + click` on these to see how they are defined in Lean as
 -- inductive types.
 #check And
 #check Or
@@ -218,19 +218,19 @@ section
 #check Subtype (fun n : ℕ => n > 0)
 
 -- Actually, `Subtype` itself is just an inductive type.
--- Can you guess how it is defined? (Or `Ctrl+Click` your way through!)
+-- Can you guess how it is defined? (Or `ctrl/cmd + click` your way through!)
 
 -- Lean has a convenient notation for subtypes. For example, this is the same subtype as that
 -- previous one:
 #check { n : ℕ // n > 0 }
--- These are just regular `/` on your keyboard.
+-- These are just regular forward slashes `/` on your keyboard.
 -- In mathlib, this type is called `ℕ+`.
 
 -- Terms of a subtype have convenient projections.
 variable (n : ℕ+)
 #check n.val
 #check n.prop
--- The notation `↑n` shown in the Infoview is Lean's less visually intrusive way of saying `n.val`.
+-- The notation `↑n` shown in the Infoview is Lean's visually less intrusive way of saying `n.val`.
 -- This `↑` is called a coercion, about which we will learn more next week.
 
 /-
@@ -239,11 +239,11 @@ variable (n : ℕ+)
 
 -- 4. Define the subtype of even natural numbers.
 
-def ℕeven : Type := sorry
+def NatEven : Type := sorry
 
--- Now define a function from `ℕ → ℕeven` that takes a natural number `n` and returns `2 * n`.
+-- Now define a function from `ℕ → NatEven` that takes a natural number `n` and returns `2 * n`.
 
-def double (n : ℕ) : ℕeven := sorry
+def double (n : ℕ) : NatEven := sorry
 
 end
 
@@ -268,7 +268,7 @@ section
 -- For example, here is a `Setoid`:
 variable (n : ℕ)
 
-def ℕmodRel : Setoid ℕ where
+def NatModRel : Setoid ℕ where
   r := fun a b => a % n = b % n
   iseqv := ⟨fun x => rfl,
     fun hxy => hxy.symm,
@@ -277,11 +277,11 @@ def ℕmodRel : Setoid ℕ where
 -- We provide a relation `r` and a proof that it is an equivalence relation `iseqv`.
 
 -- The type of equivalence classes of a `Setoid` is constructed using `Quotient`.
-def ℕmod : Type := Quotient (ℕmodRel n)
+def NatMod : Type := Quotient (NatModRel n)
 
 -- To produce an element of a quotient, we use `mk` or `⟦⟧`.
-#check Quotient.mk (ℕmodRel n)
-#check (⟦0⟧ : ℕmod n)
+#check Quotient.mk (NatModRel n)
+#check (⟦0⟧ : NatMod n)
 
 -- To define a function out of a quotient type, we use the universal property.
 -- This can be accessed with `Quotient.lift`.
@@ -291,11 +291,11 @@ def ℕmod : Type := Quotient (ℕmodRel n)
 #check Quotient.sound
 
 -- For example, we can define a sucessor function on `ℕmod n`.
-def modSucc {n : ℕ} : ℕmod n → ℕmod n:=
+def modSucc {n : ℕ} : NatMod n → NatMod n:=
   Quotient.lift (λ k ↦ ⟦k + 1⟧) (by
     intro a b h
     apply Quot.sound
-    dsimp [ℕmodRel]
+    dsimp [NatModRel]
     rw [Nat.add_mod a, Nat.add_mod b, h]
   )
 
@@ -303,14 +303,14 @@ def modSucc {n : ℕ} : ℕmod n → ℕmod n:=
 -- can prove them for any representative.
 #check Quotient.ind
 
-example : (k : ℕmod n) → ∃ h, k = ⟦h⟧ := by
+example : (k : NatMod n) → ∃ h, k = ⟦h⟧ := by
   apply Quotient.ind
   intro h
   exact ⟨h, rfl⟩
 
 -- This is a bit like an induction proof, so we can use the `induction'` tactic.
 -- This is one of the reasons `induction'` is more powerful than `induction`.
-example (k : ℕmod n) : ∃ h, k = ⟦h⟧ := by
+example (k : NatMod n) : ∃ h, k = ⟦h⟧ := by
   induction' k using Quotient.ind with h
   exact ⟨h, rfl⟩
 -- Here we are telling `induction'` that the principle of induction we want to use
@@ -327,8 +327,8 @@ example (k : ℕmod n) : ∃ h, k = ⟦h⟧ := by
 #check Quot.sound
 #check Nat.sub_add_cancel
 
-example (hn : n ≥ 1) : modSucc (⟦n - 1⟧ : ℕmod n) = ⟦0⟧ := by
-  letI := ℕmodRel n
+example (hn : n ≥ 1) : modSucc (⟦n - 1⟧ : NatMod n) = ⟦0⟧ := by
+  letI := NatModRel n
   -- This line will make `Quotient.lift_mk` work. You can ignore it for now. We will see more
   -- about it next week when we talk about typeclasses.
   sorry
