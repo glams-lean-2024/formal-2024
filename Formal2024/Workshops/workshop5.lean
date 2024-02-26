@@ -100,6 +100,18 @@ lemma zero_add' (n : MyNat) : add zero n = n := by
 
 -- What happens if instead of `induction'` we use `rcases`?
 
+-- Lean is able to do induction on any inductive type. Every time we define an inductive type,
+-- Lean generates some induction principles for us. These are called `rec` and `recOn`, and they
+-- are what the `induction` tactic uses under the hood.
+#check MyNat.rec
+-- MyNat.rec.{u}
+--   {motive : MyNat → Sort u}
+--   (zero : motive zero)
+--   (succ : (n : MyNat) → motive n → motive (succ n))
+--   (t : MyNat)
+-- : motive t
+#check MyNat.recOn
+
 /-
   # Exercises
 -/
@@ -156,6 +168,8 @@ example (h : MyExists (fun x : ℕ ↦ x < 0)) : False := by
 #check ℕ
 #check ℤ
 #check Prod
+#check Unit
+#check Empty
 
 /-
   # Exercises
@@ -296,5 +310,36 @@ example (hn : n ≥ 1) : modSucc (⟦n - 1⟧ : ℕmod n) = ⟦0⟧ := by
   -- This line will make `Quotient.lift_mk` work. You can ignore it for now. We will see more
   -- about it next week when we talk about typeclasses.
   sorry
+
+end
+
+section
+
+-- 6. Here are two inductively defined predicates on natural numbers.
+
+inductive even : ℕ → Prop where
+  | zero : even 0
+  | add_two {n : ℕ} (h : even n) : even (n + 2)
+
+inductive odd : ℕ → Prop where
+  | one : odd 1
+  | add_two {n : ℕ} (h : odd n) : odd (n + 2)
+
+-- Prove the following three lemmas.
+
+-- If you get stuck, remember that `even` and `odd` are inductive types, so they come with their
+-- own recursion principle.
+#check even.rec
+#check odd.rec
+
+lemma odd_of_succ_even (n : ℕ) : even n → odd (n + 1) := by
+  sorry
+
+lemma even_of_succ_odd (n : ℕ) : even n → odd (n + 1) := by
+  sorry
+
+lemma even_or_odd (n : ℕ) : even n ∨ odd n := by
+  sorry
+
 
 end
