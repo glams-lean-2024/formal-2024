@@ -192,10 +192,14 @@ example (h : MyExists (fun x : ℕ ↦ x < 0)) : False := by
   norm_num at hn
 
 -- Inductive types with only one constructor are called *structures*. We will learn more
--- about these next week!
+-- about these next week. For now, we will just see how the syntax for defining them is a little
+-- different. For example, we could have equivalently defined `MyExists` as
+structure MyExists' {α : Type} (p : α → Prop) where
+  w : α
+  h : p w
 
 -- If you are curious, you can `ctrl/cmd + click` on these to see how they are defined in Lean as
--- inductive types.
+-- inductive types/structures.
 #check And
 #check Or
 #check Exists
@@ -363,7 +367,12 @@ example (hn : n ≥ 1) : modSucc (⟦n - 1⟧ : NatMod n) = ⟦0⟧ := by
   letI := NatModRel n
   -- This line will make `Quotient.lift_mk` work. You can ignore it for now. We will see more
   -- about it next week when we talk about typeclasses.
-  sorry
+  apply Quot.sound
+  dsimp [NatModRel]
+
+-- If you are stuck with a goal of the form `a ≈ b`, try `dsimp [(· ≈ ·), NatModRel]`.
+-- If you are stuck with a goal of the form `Setoid.r a b`, try `dsimp [NatModRel]`.
+-- These will unfold the relevant definition to give you something more familiar looking.
 
 end
 
