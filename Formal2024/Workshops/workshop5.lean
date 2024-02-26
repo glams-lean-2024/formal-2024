@@ -80,6 +80,9 @@ namespace MyNat
 def add : MyNat → MyNat → MyNat
   | n, zero => n
   | n, succ m => succ (add n m)
+-- Note that this definition is recursive! However, Lean is able to tell that this recursion
+-- is well-founded, i.e. it will always terminate. This is thanks to the theory of inductive
+-- types, which Lean is aware of.
 
 lemma add_zero (n : MyNat) : add n zero = n := rfl
 lemma add_succ (n m : MyNat) : add n (succ m) = succ (add n m) := rfl
@@ -191,7 +194,7 @@ end
 
 -- To use these, we give the `induction'` tactic a principle to use,
 -- e.g. `using Nat.strong_induction_on`.
-example {n : ℕ} (ge2 : 2 ≤ n) : ∃ p, Nat.Prime p ∧ p ∣ n := by
+lemma exists_prime_factor {n : ℕ} (ge2 : 2 ≤ n) : ∃ p, Nat.Prime p ∧ p ∣ n := by
   induction' n using Nat.strong_induction_on with n ih
   by_cases hn : Nat.Prime n
   · use n, hn
