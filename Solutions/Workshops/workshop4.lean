@@ -304,6 +304,9 @@ def oddSet : Set ℕ :=
 -- 6
 example : { n | Nat.Prime n } ∩ { n | n > 2 } ⊆ oddSet := by
   rintro x ⟨hprime, hgt2⟩
+  -- `suffices` in the next line is used as a way to say "it suffices to show this ..."
+  -- so when writing `suffices hodd : ¬Even x` it first gives us a hypothesis `hodd : ¬Even x` and asks us to prove the goal using it.
+  -- after that, it asks us to prove `hodd`
   suffices hodd : ¬Even x
   . exact hodd
   intro heven
