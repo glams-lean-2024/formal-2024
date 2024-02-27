@@ -163,13 +163,15 @@ end
   In Lean, this inclusion is called `Nat.cast`.
 -/
 
+open Function
+
 #check Nat.cast (α := ℤ)
 -- Cast is defined in greater generality as a function `ℕ → α` for certain types `α`. This
 -- argument is implicit, but we can provide it explicilty using the `(α := ℤ)` syntax.
 #check Nat.cast (α := ℤ) 0
 -- Note that Lean uses the `↑` notation for `Nat.cast`. We will learn more about this next week.
 
-lemma not_surjective_nat_int : ¬ Function.Surjective (Nat.cast : ℕ → ℤ) := sorry
+lemma not_surjective_nat_int : ¬ Surjective (Nat.cast : ℕ → ℤ) := sorry
 
 -- You may find the following lemma useful.
 #check Nat.cast_lt (α := ℤ)
