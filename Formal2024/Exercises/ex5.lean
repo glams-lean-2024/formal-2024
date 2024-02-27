@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2024 TheLeanTeam. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: The Lean Team
+-/
 import Library
 
-/-! # Part 1 : myEven and myOdd
+/-!
+
+# Exercises for week 5
+
+-/
+
+
+/-! ## Part 1 : myEven and myOdd
   definitions of myEven and myOdd natural numbers using `inductive` -/
 
 inductive myEven : Nat → Prop
@@ -11,7 +23,7 @@ inductive myOdd : Nat → Prop
 | one : myOdd 1
 | two_plus_n : ∀ n, myOdd n → myOdd (n + 2)
 
-/-! ## basic properties of myEven and myOdd -/
+/-! ### basic properties of myEven and myOdd -/
 
 theorem myEven_or_myOdd : ∀ n, myEven n ∨ myOdd n := sorry
 
@@ -44,7 +56,7 @@ theorem myEven_pow : ∀ m n, myEven m → myEven (m ^ n) := sorry
 theorem myOdd_pow : ∀ m n, myOdd m → myOdd (m ^ n) := sorry
 
 
-/-! # Part 2 : Unique existence
+/-! ## Part 2 : Unique existence
   We introduce the useful `∃!` notation. Given a type `α` and `p : α → Prop`, `∃! x : α, p x` is
   a proposition asserting that there exists a unique term `x : α` such that `p x` holds.
   This is equivalent to `∃ x, p x ∧ ∀ y, p y → y = x`.
@@ -61,7 +73,7 @@ lemma Nat.exists_unique_le : ∃! n m : Nat, m ≤ n := by
   sorry
 
 
-/-! # Part 3 : Types and logic
+/-! ## Part 3 : Types and logic
   Here we examine some interesting interactions between types and logic.
 -/
 
@@ -77,13 +89,15 @@ example : Nonempty ℕ := sorry
 example {α β : Type} : Nonempty α → Nonempty β → Nonempty (α × β) := sorry
 
 -- Now try to understand and prove the following lemma.
-lemma existence_implies_everything_iff {α : Type*} (r : α → Prop) :
+theorem existence_implies_everything_iff {α : Type*} (r : α → Prop) :
   (∃ x, (r x → ∀ y, r y)) ↔ Nonempty α := sorry
+
+-- The above theorem is exactly "drinker's principle/paradox": [wiki/drinker_paradox#non-empty_domain](https://en.wikipedia.org/wiki/Drinker_paradox#Non-empty_domain).
 
 -- You can think of `Nonempty` as a special case of `Exists` (`∃`), where the predicate is trivial.
 
 
-/-! # Part 4 : Type equality and cardinality
+/-! ## Part 4 : Type equality and cardinality
   For this question, we will explore when two types can be the same in two different ways.
   One of them is equality, which is very strict. Another is having the same cardinality.
 -/
@@ -99,7 +113,7 @@ lemma ne_types_of_different_property {α β : Type}
   (p : Type → Prop) (hα : p α) (hβ : ¬ p β) : α ≠ β := sorry
 
 -- Now prove that there exists two types that are not equal.
-lemma exists_ne_types : ∃ α β : Type, α ≠ β := sorry
+theorem exists_ne_types : ∃ α β : Type, α ≠ β := sorry
 -- If you get stuck at this point, skip this exercise and come back to it at the end!
 
 section
@@ -131,28 +145,28 @@ variable {α : Type}
 -- This is the same as `Quotient.mk Cardinal.isEquivalent α`.
 end
 
--- Now prove that two types with different cardinality cannot be equal.
-lemma ne_types_of_ne_cardinal {α β : Type} (h : #α ≠ #β) : α ≠ β := by
-  sorry
-
--- Now prove this. (Hint: you don't need to use the previous one.)
+-- Now prove that two types where one is countable and one isn't cannot be equal.
 lemma ne_types_of_countable_uncountable {α β : Type}
   (hα : Countable α) (hβ : Uncountable β) : α ≠ β := sorry
 
--- *Reminder*: if you couldn't find two types that were not equal before, go back a try it now.
+-- Now prove this. (Hint: you don't need to use the previous one.)
+lemma ne_types_of_ne_cardinal {α β : Type} (h : #α ≠ #β) : α ≠ β := by
+  sorry
+
+-- *Reminder*: if you couldn't find two types that were not equal before, go back to theorem `exists_ne_types` a try it now.
 
 end
 
 
-/-! # Part 5 : Nat.cast is not surjective
+/-! ## Part 5 : Nat.cast is not surjective
   For this last question, we will prove that the obvious inclusion `ℕ → ℤ` is not surjective.
   In Lean, this inclusion is called `Nat.cast`.
 -/
 
-#check Nat.cast (R := ℤ)
--- Cast is defined in greater generality as a function `ℕ → R` for certain types `R`. This
--- argument is implicit, but we can provide it explicilty using the `(R := ℤ)` syntax.
-#check Nat.cast (R := ℤ) 0
+#check Nat.cast (α := ℤ)
+-- Cast is defined in greater generality as a function `ℕ → α` for certain types `α`. This
+-- argument is implicit, but we can provide it explicilty using the `(α := ℤ)` syntax.
+#check Nat.cast (α := ℤ) 0
 -- Note that Lean uses the `↑` notation for `Nat.cast`. We will learn more about this next week.
 
 lemma not_surjective_nat_int : ¬ Function.Surjective (Nat.cast : ℕ → ℤ) := sorry
