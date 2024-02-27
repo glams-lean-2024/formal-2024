@@ -248,6 +248,8 @@ example (f : ℝ → ℝ) (h : NonDecreasing f) (h' : ∀ x, f (f x) = x) : ∀ 
   rcases le_total (f x) x with H | H
   · apply le_antisymm H
     nth_rw 1 [← h' x]
+    -- `nth_rw` is a tactic that rewrites on the "n-th" variable.
+    -- so writing `nth_rw 1 [← h' x]` means `rw [← h' x]` at the first instance of `x`
     exact h _ _ H
   . apply le_antisymm _ H
     nth_rw 2 [← h' x]
