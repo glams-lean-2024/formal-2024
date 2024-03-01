@@ -20,7 +20,7 @@ import Library
 
 universe u v
 
--- Here we define an "α point" (a pair of terms of type α) as an inductive type with a single 
+-- Here we define an "α point" (a pair of terms of type α) as an inductive type with a single
 -- constructor.
 inductive Point' (α : Type u) : Type u
 | mk : α → α → Point' α
@@ -162,7 +162,9 @@ end SpecialPoint
   # Type Classes
 -/
 
--- To access Lean's type class system, we need to use classes rather than structures. These are defined just like structures but with the `class` keyword. This is just like defining a structure with the `@[class]` attribute.
+-- To access Lean's type class system, we need to use classes rather than structures.
+-- These are defined just like structures but with the `class` keyword.
+-- This is just like defining a structure with the `@[class]` attribute.
 
 class Group₂ (α : Type*) :=
 (mul: α → α → α)
@@ -175,13 +177,15 @@ class Group₂ (α : Type*) :=
 
 #check @Group₂.mul
 
--- Given any term `x` where Lean knows the type `α` of `x` has a `Group₂` structure, then we define the function of squaring.
+-- Given any term `x` where Lean knows the type `α` of `x` has a `Group₂` structure,
+-- then we define the function of squaring.
 
 def my_square {α : Type*} [Group₂ α] (x : α) := Group₂.mul x x
 
 #check @my_square
 
--- Here, the square brackets denote an implicit `Group₂` structure should be inferred on `α`, just like the curly brackets denote that `α` itself should be inferred from `x`.
+-- Here, the square brackets denote an implicit `Group₂` structure should be inferred on `α`,
+-- just like the curly brackets denote that `α` itself should be inferred from `x`.
 
 -- For another example, let's think about the type of equivalences of a type.
 
@@ -217,7 +221,8 @@ instance {α : Type*} : Group₂ (Equiv.Perm α) :=
   mul_one      := Equiv.refl_trans,
   mul_left_inv := Equiv.self_trans_symm }
 
--- Now class inference can be performed. Below we can use that self-equivalences of β form a group without having to specify the group structure, since we have already told Lean that.
+-- Now class inference can be performed. Below we can use that self-equivalences of β form a group
+-- without having to specify the group structure, since we have already told Lean that.
 
 section
 variable {β : Type*} (f g : Equiv.Perm β)
@@ -236,9 +241,11 @@ instance has_one_Group₂ {α : Type*} [Group₂ α] : One α := ⟨Group₂.one
 
 instance has_inv_Group₂ {α : Type*} [Group₂ α] : Inv α := ⟨Group₂.inv⟩
 
--- We could also have used the `extends` keyword to define `Group₂` extending of `Mul`, `One`, and `Inv`, just like we did with structures. See Exercise 4 for an example of this.
+-- We could also have used the `extends` keyword to define `Group₂` extending of `Mul`, `One`,
+-- and `Inv`, just like we did with structures. See Exercise 4 for an example of this.
 
--- Now that we have specified `Group₂` extends/is an instance of `Mul`, `One`, and `Inv`, we can use the notation for these operations.
+-- Now that we have specified `Group₂` extends/is an instance of `Mul`, `One`, and `Inv`,
+-- we can use the notation for these operations.
 
 section
 variable {α : Type*} (f g : Equiv.Perm α)
@@ -255,9 +262,12 @@ end
 
 -- 3. Modify the definition of `Point.add` so that it works for any type `α` which supports addition.
 
--- Hint: Try to find a suitable class in Mathlib. Whatever it is, it had better be implemented by ℕ. [https://leanprover-community.github.io/mathlib-overview.html]
+-- Hint: Try to find a suitable class in Mathlib. Whatever it is, it had better be implemented by ℕ.
+-- [https://leanprover-community.github.io/mathlib-overview.html]
 
--- 4. Here we define a class of semigroups (a type with an associative operation on it). Show that the natural numbers are a semigroup, and that the product of two semigroups is a semigroup.
+-- 4. Here we define a class of semigroups (a type with an associative operation on it).
+-- Show that the natural numbers are a semigroup, and that the product of
+-- two semigroups is a semigroup.
 
 class MySemigroup (G : Type u) extends Mul G : Type u :=
 (mul_assoc : ∀ a b c : G, mul (mul a b) c = mul a (mul b c))
