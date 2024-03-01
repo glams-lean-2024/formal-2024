@@ -68,7 +68,7 @@ example (a b : Point ℕ ) (hx : a.x = b.x) (hy : a.y = b.y) : a = b := by
 namespace Point -- any structure creates a namespace
 
 def add : Point ℕ → Point ℕ → Point ℕ :=
-λ a b => ⟨a.x + b.x, a.y + b.y⟩
+  λ a b => ⟨a.x + b.x, a.y + b.y⟩
 
 def smul (n : ℕ) (p : Point ℕ) :=
   Point.mk (n * p.x) (n * p.y)
