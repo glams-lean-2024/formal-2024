@@ -167,13 +167,13 @@ end SpecialPoint
 -- This is just like defining a structure with the `@[class]` attribute.
 
 class Group₂ (α : Type*) :=
-(mul: α → α → α)
-(one: α)
-(inv: α → α)
-(mul_assoc : ∀ x y z : α, mul (mul x y) z = mul x (mul y z))
-(mul_one: ∀ x : α, mul x one = x)
-(one_mul: ∀ x : α, mul x one = x)
-(mul_left_inv : ∀ x : α, mul (inv x) x = one)
+  (mul: α → α → α)
+  (one: α)
+  (inv: α → α)
+  (mul_assoc : ∀ x y z : α, mul (mul x y) z = mul x (mul y z))
+  (mul_one: ∀ x : α, mul x one = x)
+  (one_mul: ∀ x : α, mul x one = x)
+  (mul_left_inv : ∀ x : α, mul (inv x) x = one)
 
 #check @Group₂.mul
 
@@ -275,9 +275,9 @@ class MySemigroup (G : Type u) extends Mul G : Type u :=
 namespace MySemigroup
 
 instance NatSemigroup : MySemigroup ℕ :=
-sorry
+  sorry
 
 instance ProdSemigroup {G : Type u} {H : Type v} [MySemigroup G] [MySemigroup H] : MySemigroup (G × H) :=
-sorry
+  sorry
 
 end MySemigroup
