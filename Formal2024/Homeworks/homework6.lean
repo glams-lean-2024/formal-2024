@@ -16,7 +16,10 @@ Here define the structure of a standard simplex and ask you to prove something a
 -/
 
 /-
-The standard 2-simplex is defined to be the set of points (x, y, z) satisfying x ≥ 0, y ≥ 0, z ≥ 0, and x + y + z = 1. If you are not familiar with the notion, you should draw a picture, and convince yourself that this set is the equilateral triangle in three-space with vertices (1, 0, 0), (0, 1, 0), and (0, 0, 1), together with its interior.
+The standard 2-simplex is defined to be the set of points (x, y, z) satisfying x ≥ 0, y ≥ 0, z ≥ 0,
+and x + y + z = 1. If you are not familiar with the notion, you should draw a picture,
+and convince yourself that this set is the equilateral triangle in three-space with vertices
+(1, 0, 0), (0, 1, 0), and (0, 0, 1), together with its interior.
 -/
 
 structure StandardTwoSimplex where
@@ -34,7 +37,8 @@ namespace StandardTwoSimplex
 
 noncomputable section
 
--- We can define the midpoint of two points in the standard simplex, and it will still be in the standard simplex.
+-- We can define the midpoint of two points in the standard simplex,
+-- and it will still be in the standard simplex.
 def midpoint (a b : StandardTwoSimplex) : StandardTwoSimplex
     where
   x := (a.x + b.x) / 2
@@ -45,7 +49,9 @@ def midpoint (a b : StandardTwoSimplex) : StandardTwoSimplex
   z_nonneg := div_nonneg (add_nonneg a.z_nonneg b.z_nonneg) (by norm_num)
   sum_eq := by field_simp; linarith [a.sum_eq, b.sum_eq]
 
--- Given a parameter λ satisfying 0 ≤ λ ≤ 1, we can take the weighted average λa + (1 - λ)b of two points a and b in the standard simplex. We challenge you to define that function, in analogy to the midpoint function above.
+-- Given a parameter λ satisfying 0 ≤ λ ≤ 1, we can take the weighted average λa + (1 - λ)b of
+-- two points a and b in the standard simplex. We challenge you to define that function,
+-- in analogy to the midpoint function above.
 
 def weightedAverage (lambda : Real) (lambda_nonneg : 0 ≤ lambda) (lambda_le : lambda ≤ 1)
     (a b : StandardTwoSimplex) : StandardTwoSimplex :=
@@ -57,7 +63,8 @@ end StandardTwoSimplex
 
 /-!
 # Problem 2: Classes [MIL 7.3]
-In this problem we will combine classes with what we learned about quotient types. Our goal is to prove that the quotient of a commutatuve monoid by a submonoid is again a monoid.
+In this problem we will combine classes with what we learned about quotient types.
+Our goal is to prove that the quotient of a commutatuve monoid by a submonoid is again a monoid.
 -/
 
 variable (M N : Type*)
@@ -67,7 +74,8 @@ variable (M N : Type*)
 #check Submonoid.one_mem
 #check Submonoid.mul_mem
 
--- We will define the monoid structure on the quotient type. To take the quotient type, we first need a setoid. Try to fill in the following definition.
+-- We will define the monoid structure on the quotient type. To take the quotient type,
+-- we first need a setoid. Try to fill in the following definition.
 def Submonoid.Setoid [CommMonoid M] (N : Submonoid M) : Setoid M  where
   r := fun x y ↦ ∃ w ∈ N, ∃ z ∈ N, x*w = y*z
   iseqv := {
@@ -78,17 +86,21 @@ def Submonoid.Setoid [CommMonoid M] (N : Submonoid M) : Setoid M  where
       refine ⟨w*w', N.mul_mem hw hw', z*z', N.mul_mem hz hz', ?_⟩
       sorry
   }
--- Above we saw the `refine` tactic, which is like `exact` but where we can leave a gap to be filled in as a new goal.
+-- Above we saw the `refine` tactic, which is like `exact` but where we can leave a gap to be
+-- filled in as a new goal.
 
--- We register the pair (M, N) where M is a submonoid of M as an instance of the HasQuotient class, allowing us to use the notation M ⧸ N for the quotient (the quotient symbol is not a normal forward slash and is typed as `\quot`)
+-- We register the pair (M, N) where M is a submonoid of M as an instance of the HasQuotient class,
+-- allowing us to use the notation M ⧸ N for the quotient
+-- (the quotient symbol is not a normal forward slash and is typed as `\quot`)
 instance [CommMonoid M] : HasQuotient M (Submonoid M) where
   quotient' := fun N ↦ Quotient N.Setoid
 
 def QuotientMonoid.mk [CommMonoid M] (N : Submonoid M) : M → M ⧸ N := Quotient.mk N.Setoid
 
--- Now we can define the monoid structure on the quotient type. Try to fill in the following instance declaration.
+-- Now we can define the monoid structure on the quotient type.
+-- Try to fill in the following instance declaration.
 
---You can use `Setoid.refl` but it won't always be able to detect the relvant setoid structure.
+-- You can use `Setoid.refl` but it won't always be able to detect the relvant setoid structure.
 -- In that case, you can use `@Setoid.refl M N.Setoid` to explicitly specify the setoid structure.
 instance [CommMonoid M] (N : Submonoid M) : Monoid (M ⧸ N) where
   mul := Quotient.map₂' (· * ·) (by
