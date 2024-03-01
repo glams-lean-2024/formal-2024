@@ -20,7 +20,8 @@ import Library
 
 universe u v
 
--- Here we define an "α point" (a pair of terms of type α) as an inductive type with a single constructor.
+-- Here we define an "α point" (a pair of terms of type α) as an inductive type with a single 
+-- constructor.
 inductive Point' (α : Type u) : Type u
 | mk : α → α → Point' α
 
