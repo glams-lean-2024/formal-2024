@@ -12,7 +12,7 @@ References: [MIL] Mathematics in Lean.
 
 /-!
 # Problem 1: Structures [MIL 6.1]
-Here define the structure of a standard simplex and ask you to prove something about it.
+Here we define the structure of a standard simplex and ask you to prove something about it.
 -/
 
 /-
