@@ -101,7 +101,7 @@ structure RGBPoint (α : Type*) extends Point α, RGBValue
 #print prefix RGBPoint
 #check RGBPoint.mk
 #check RGBPoint.toPoint
-
+#check RGBPoint.toRGBValue
 def cp := RGBPoint.mk (Point.mk 1 2) (RGBValue.mk 10 20 30)
 
 #eval cp.x
