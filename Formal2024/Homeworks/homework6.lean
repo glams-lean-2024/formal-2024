@@ -64,7 +64,7 @@ end StandardTwoSimplex
 /-!
 # Problem 2: Classes [MIL 7.3]
 In this problem we will combine classes with what we learned about quotient types.
-Our goal is to prove that the quotient of a commutatuve monoid by a submonoid is again a monoid.
+Our goal is to prove that the quotient of a commutative monoid by a submonoid is again a monoid.
 -/
 
 variable (M N : Type*)
