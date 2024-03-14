@@ -6,7 +6,7 @@ Authors: The Lean Team
 import Mathlib.Analysis.InnerProductSpace.Adjoint
 
 /-!
- # Week 7 - debugging
+ # Week 7 - Diamonds
 
  In this file, we will learn how to identify and resolve diamonds (type mismatch errors).
 
