@@ -1,5 +1,5 @@
 /-
-Copyright (c) 2024 TheLeanTeam. All rights reserved.
+Copyright (c) 2024 TheLeanTeam. All rightPs reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: The Lean Team
 -/
@@ -18,11 +18,11 @@ section example_intro
 /- `NormedAddCommGroup`, `InnerProductSpace`, `Ring`, `Algebra` and `Finite_dimensional`
   gives a mismatch error when trying to deal with linear maps. -/
 
--- example {E : Type*} [hE₁ : NormedAddCommGroup E] [hE₂ : InnerProductSpace ℂ E]
---   [hE₃ : Ring E] [hE₄ : Algebra ℂ E] (T : E →ₗ[ℂ] E) [hE₅ : FiniteDimensional ℂ E]
---   (h : (LinearMap.adjoint T) = (0 : E →ₗ[ℂ] E)) :
---   T = 0 :=
--- sorry
+example {E : Type*} [hE₁ : NormedAddCommGroup E] [hE₂ : InnerProductSpace ℂ E]
+  [hE₃ : Ring E] [hE₄ : Algebra ℂ E] (T : E →ₗ[ℂ] E) [hE₅ : FiniteDimensional ℂ E]
+  (h : (LinearMap.adjoint T) = T) :
+  T = T :=
+sorry
 
 /-!
  ## Attempting to fix the error: the naive approach
@@ -30,11 +30,11 @@ section example_intro
 
 -- can we be more specific to fix the error?
 
--- example {E : Type*} [hE₁ : NormedAddCommGroup E] [hE₂ : InnerProductSpace ℂ E]
---   [hE₃ : Ring E] [hE₄ : Algebra ℂ E] (T : E →ₗ[ℂ] E) [hE₅ : FiniteDimensional ℂ E]
---   (h : @LinearMap.adjoint ℂ E E Complex.instIsROrCComplex hE₁ hE₁ hE₂ hE₂ hE₅ hE₅ T = 0) :
---   T = 0 :=
--- sorry
+example {E : Type*} [hE₁ : NormedAddCommGroup E] [hE₂ : InnerProductSpace ℂ E]
+  [hE₃ : Ring E] [hE₄ : Algebra ℂ E] (T : E →ₗ[ℂ] E) [hE₅ : FiniteDimensional ℂ E]
+  (h : @LinearMap.adjoint ℂ E E Complex.instIsROrCComplex hE₁ hE₁ hE₂ hE₂ hE₅ hE₅ T = 0) :
+  T = 0 :=
+sorry
 
 /- nope
   ... so how do we fix this?!
@@ -45,17 +45,17 @@ section example_intro
 
   This is because the following are not definitionally equal: -/
 
--- example {E : Type*} [hE : NormedAddCommGroup E] [hE₂ : Ring E] :
---   hE.toAddCommMonoid = hE₂.toAddCommMonoid :=
--- rfl -- gives an error
+example {E : Type*} [hE : NormedAddCommGroup E] [hE₂ : Ring E] :
+  hE.toAddCommMonoid = hE₂.toAddCommMonoid :=
+rfl -- gives an error
 
 -- can we specify which instances the linear map should access?
 
--- example {E : Type*} [hE₁ : NormedAddCommGroup E] [hE₂ : InnerProductSpace ℂ E]
---   [hE₃ : Ring E] [hE₄ : Algebra ℂ E] (T : E →ₗ[ℂ] E) [hE₅ : FiniteDimensional ℂ E] :
---   LinearMap.adjoint (T : @LinearMap ℂ ℂ _ _ _ E E
---     (hE₁.toAddCommMonoid) (hE₁.toAddCommMonoid)
---     (NormedSpace.toModule) (NormedSpace.toModule)) = T := sorry
+example {E : Type*} [hE₁ : NormedAddCommGroup E] [hE₂ : InnerProductSpace ℂ E]
+  [hE₃ : Ring E] [hE₄ : Algebra ℂ E] (T : E →ₗ[ℂ] E) [hE₅ : FiniteDimensional ℂ E] :
+  LinearMap.adjoint (T : @LinearMap ℂ ℂ _ _ _ E E
+    (hE₁.toAddCommMonoid) (hE₁.toAddCommMonoid)
+    (NormedSpace.toModule) (NormedSpace.toModule)) = T := sorry
 
 -- nope...
 -- maybe we can we fix this by reordering the instances??
@@ -67,10 +67,10 @@ example {E : Type*} [hE₁ : NormedAddCommGroup E] [hE₂ : InnerProductSpace �
 -- BUT, what if we needed to define a linear map within the proof?
 example {E : Type*} [hE₁ : NormedAddCommGroup E] [hE₂ : InnerProductSpace ℂ E]
   (T : E →ₗ[ℂ] E) [Ring E] [Algebra ℂ E] [hE : FiniteDimensional ℂ E]
-  (h : LinearMap.adjoint T = 0) : T = 0 := by
+  (h : LinearMap.adjoint T = T) : T = 0 := by
 {
   let f : E →ₗ[ℂ] E := sorry
-  -- have : @LinearMap.adjoint ℂ E E _ hE₁ hE₁ hE₂ hE₂ hE hE f = 0 := sorry
+  have : @LinearMap.adjoint ℂ E E _ hE₁ hE₁ hE₂ hE₂ hE hE f = 0 := sorry
 
   -- back to the error...
 
@@ -87,10 +87,10 @@ example {E : Type*} [hE₁ : NormedAddCommGroup E] [hE₂ : InnerProductSpace �
 -- unless you resolve the diamond problem, you will always get an error if you try to access
 -- both the algebra and inner product space at the same time:
 
--- example (E : Type) [hE₁ : NormedAddCommGroup E] [hE₂ : InnerProductSpace ℂ E]
---   (T : E →ₗ[ℂ] ℂ) [Ring E] [Algebra ℂ E] [hE : FiniteDimensional ℂ E] :
---   LinearMap.adjoint (Algebra.linearMap ℂ E) = T :=
--- sorry
+example (E : Type) [hE₁ : NormedAddCommGroup E] [hE₂ : InnerProductSpace ℂ E]
+  (T : E →ₗ[ℂ] ℂ) [Ring E] [Algebra ℂ E] [hE : FiniteDimensional ℂ E] :
+  LinearMap.adjoint (Algebra.linearMap ℂ E) = T :=
+sorry
 
 -- so we need to learn how to resolve the diamonds in order to move on
 end example_intro
@@ -162,9 +162,9 @@ sorry
 -- `AddMonoidWithOne` in Lean 4 is stronger
 -- however, Lean does not know if the ones are definitionally equal:
 
--- example (A : Type) [h₁ : AddMonoidWithOne A] [h₂ : Ring A] :
---   h₁.one = h₂.one :=
--- rfl -- fails
+example (A : Type) [h₁ : AddMonoidWithOne A] [h₂ : Ring A] :
+  h₁.one = h₂.one :=
+rfl -- fails
 
 -- :TODO:
 -- show that `1 : A` in `AddMonoidWithOne` is `1 : ℕ` coerced into `A`
@@ -292,19 +292,18 @@ example {E : Type*} [h : NACGoR E] [hE₂ : InnerProductSpace ℂ E] [Algebra �
 
 -- but we still have some issues remaining to address:
 
--- example {E : Type*} [hE₁ : NACGoR E] [hE₂ : InnerProductSpace ℂ E]
---   [hE₃ : Algebra ℂ E] [hE₄ : FiniteDimensional ℂ E]
---   (T : E →ₗ[ℂ] E) (x y : E) :
---   0 = (LinearMap.adjoint (Algebra.linearMap ℂ E)) x := sorry
+example {E : Type*} [hE₁ : NACGoR E] [hE₂ : InnerProductSpace ℂ E]
+  [hE₃ : Algebra ℂ E] [hE₄ : FiniteDimensional ℂ E]
+  (T : E →ₗ[ℂ] E) (x y : E) :
+  0 = (LinearMap.adjoint (Algebra.linearMap ℂ E)) x := sorry
 
 /- The error is because of the following non-transparent diamond:
   the module (inferred by the inner product space) is not definitionally equal to that
   inferred by the algebra. -/
-
--- example {E : Type*} [NACGoR E]
---   [h : InnerProductSpace ℂ E] [Algebra ℂ E] :
---   h.toModule = Algebra.toModule :=
--- rfl -- fails
+example {E : Type*} [NACGoR E]
+  [h : InnerProductSpace ℂ E] [Algebra ℂ E] :
+  h.toModule = Algebra.toModule :=
+rfl -- fails
 
 /-
  `Algebra ℂ A` instance given `A` as a Semiring, `ℂ` Module, and
