@@ -2,11 +2,21 @@
 
 This is the repository for the GlaMS course on Formalising Mathematics in Lean. The course content (workshop sheets and homeworks) is located in the folder `Formal2024`. There is also a `References` folder.
 
-## Week 4:
+## Getting the weekly updates
 
 Please type the following in your terminal to update the repository properly:
 ```terminal
-git pull && yes | rm -r .lake && lake update && lake exe cache get
+git pull && lake exe cache get
+```
+
+If you get an error on the second command, try:
+```terminal
+lake update && lake exe cache get
+```
+
+If you continue getting an error, try:
+```terminal
+yes | rm -r .lake && lake update && lake exe cache get
 ```
 
 ## How to work on this
