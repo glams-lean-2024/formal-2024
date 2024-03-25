@@ -266,12 +266,17 @@ end simp
   This can be done using the `notation` command and its various incarnations.
 -/
 
+#check 1 + 2 * 3 ^ 4 ^ 5 * 6 * 7 -- This is parsed as `1 + ((2 * (3 ^ (4 ^ 5)) * 6) * 7)`.
+
 -- This is how one can define binary, prefix and postfix operators.
 infixl:65   " + " => HAdd.hAdd  -- left-associative
 infix:50    " = " => Eq         -- non-associative
-infixr:80   " ^ " => HPow.hPow  -- right-associative
+infixr:80   " ^ " => Nat.hPow  -- right-associative
 prefix:100  "-"   => Neg.neg
 postfix:max "⁻¹"  => Inv.inv
+
+-- The number after the colon is the precedence of the operator. The higher the precedence, the
+-- tighter the operator bounds. Check the example above to see how this works.
 
 -- Note that we can only assign notation to functions that are already defined.
 
@@ -281,6 +286,13 @@ notation:50 lhs:51 " = " rhs:51 => Eq lhs rhs
 notation:80 lhs:81 " ^ " rhs:80 => HPow.hPow lhs rhs
 notation:100 "-" arg:100 => Neg.neg arg
 notation:1024 arg:1024 "⁻¹" => Inv.inv arg
+
+-- After the notation and the precedence, we have the arguments that the custom notation takes, e.g.
+-- `lhs` and `rhs` in the first case above. These are called placeholders. A place holder with
+-- precedence `p` will only match an expression with precedence `p` or higher. This is how we can
+-- achieve left and right associativity. E.g. in the first example above, `lhs` has precedence 65,
+-- which is equal to the precedence of the notation itself, but `rhs` has precedence 66, which is
+-- strictly higher. Thus, `a + b + c` cannot be parsed as `a + (b + c)`.
 
 -- Lean allows us to define more complicated notation, such as `Σ x in S, f x`. This is done more
 -- generally using macros, which we won't cover here. If you want to learn more about them, check
