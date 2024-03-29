@@ -57,8 +57,17 @@ lemma dvd_fac {i n : ℕ} (ipos : 0 < i) (ile : i ≤ n) : i ∣ fac n := by
 -- infinitely many primes.
 #check Nat.exists_prime_and_dvd
 
-theorem exists_prime_ge (n : ℕ) : ∃ p, p > n ∧ Nat.Prime p :=
-Nat.exists_infinite_primes (Nat.succ n)
+theorem exists_prime_ge (n : ℕ) : ∃ p, p > n ∧ Nat.Prime p := by
+  let k := fac n + 1
+  have : k ≠ 1 := ne_of_gt (by linarith [one_le_fac n])
+  rcases Nat.exists_prime_and_dvd this with ⟨p, pprime, pdvdk⟩
+  refine ⟨p, ?_, pprime⟩
+  by_contra! plen
+  have pdvdfacn := dvd_fac (Nat.Prime.pos pprime) plen
+  have pdvd1 := Nat.dvd_sub' pdvdk pdvdfacn
+  rw [Nat.add_sub_cancel_left, Nat.dvd_one] at pdvd1
+  exact Nat.not_prime_one (pdvd1 ▸ pprime)
+
 
 /-
   ## Q2: Other kinds of induction
