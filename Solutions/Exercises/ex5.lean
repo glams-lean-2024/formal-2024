@@ -241,7 +241,8 @@ open Function
 
 lemma not_surjective_nat_int : ¬ Surjective (Nat.cast : ℕ → ℤ) := λ h => by
 { obtain ⟨x, hx⟩ := h (-1)
-  simp only [Int.reduceNeg] at hx }
+  have : (0 : ℤ) ≤ ↑x := Nat.cast_nonneg x
+  linarith }
 
 -- You may find the following lemma(s) useful.
 #check Nat.cast_le (α := ℤ)
