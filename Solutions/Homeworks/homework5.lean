@@ -25,28 +25,28 @@ def fac : ℕ → ℕ
   | n + 1 => (n + 1) * fac n
 
 lemma one_le_fac (n : ℕ) : 1 ≤ fac n := by
-{ induction n with
+  induction n with
   | zero => exact Nat.le.refl
-  | succ _ hd => simp_rw [fac]; nlinarith }
+  | succ _ hd => simp_rw [fac]; nlinarith
 
 -- Start by proving that `n ≤ n!`.
 lemma le_fac_self (n : ℕ) : n ≤ fac n := by
-{ induction n with
+  induction n with
   | zero => linarith
   | succ d _ =>
       simp_rw [fac, Nat.succ_eq_add_one]
       nth_rw 1 [← mul_one (d + 1)]
-      exact Nat.mul_le_mul Nat.le.refl (one_le_fac d) }
+      exact Nat.mul_le_mul Nat.le.refl (one_le_fac d)
 
 -- Now prove that any natural number between `1` and `n` divides `fac n`.
 lemma dvd_fac {i n : ℕ} (ipos : 0 < i) (ile : i ≤ n) : i ∣ fac n := by
-{ induction n with
+  induction n with
   | zero => linarith
   | succ d hd =>
-    { rcases Nat.of_le_succ ile with (h|h)
+      rcases Nat.of_le_succ ile with (h|h)
       { exact dvd_mul_of_dvd_right (hd h) _ }
       { rw [h]
-        exact dvd_mul_right _ _ } } }
+        exact dvd_mul_right _ _ }
 
 -- You may find the following useful.
 #check Nat.of_le_succ
@@ -77,17 +77,17 @@ theorem exists_prime_ge (n : ℕ) : ∃ p, p > n ∧ Nat.Prime p := by
 
 -- Try proving this by regular induction on `n`. You will see that it is not so easy.
 example (x : ℝ) (n : ℕ) (hx : x ≥ 2) (hn : n ≥ 1) : x ^ n ≥ n * x := by
-{ induction n with
+  induction n with
   | zero => linarith
   | succ d hd =>
-    { rcases Nat.of_le_succ hn with (h|h)
-      { simp_rw [Nat.cast_succ, pow_succ, add_mul, one_mul, ge_iff_le]
-        calc x ^ d * x ≥ d * x * x :=
-          mul_le_mul (hd h) le_rfl (by linarith) (pow_nonneg (by linarith) d)
-          _ ≥ d * x + x := add_le_mul
-            (le_mul_of_one_le_of_le_of_nonneg ?_ hx (by linarith)) hx
-        { simp only [Nat.one_le_cast, h] } }
-      { simp only [← h, pow_one, Nat.cast_one, one_mul, ge_iff_le, le_refl] } } }
+    rcases Nat.of_le_succ hn with (h|h)
+    { simp_rw [Nat.cast_succ, pow_succ, add_mul, one_mul, ge_iff_le]
+      calc x ^ d * x ≥ d * x * x :=
+        mul_le_mul (hd h) le_rfl (by linarith) (pow_nonneg (by linarith) d)
+        _ ≥ d * x + x := add_le_mul
+          (le_mul_of_one_le_of_le_of_nonneg ?_ hx (by linarith)) hx
+      simp only [Nat.one_le_cast, h] }
+    { simp only [← h, pow_one, Nat.cast_one, one_mul, ge_iff_le, le_refl] }
 
 -- Instead, we want to use this lemma. If you `ctrl/cmd + click` through you will see a
 -- short documentation comment describing its use.
@@ -102,7 +102,7 @@ example (x : ℝ) (n : ℕ) (hx : x ≥ 2) (hn : n ≥ 1) : x ^ n ≥ n * x := b
   calc x ^ n * x ≥ n * x * x :=
     mul_le_mul (ih x hx) le_rfl (by linarith) (pow_nonneg (by linarith) n)
     _ ≥ n * x + x := add_le_mul (le_mul_of_one_le_of_le_of_nonneg ?_ hx (by linarith)) hx
-  { simp only [Nat.one_le_cast, hn] }
+  simp only [Nat.one_le_cast, hn]
 
 
 /-
@@ -146,9 +146,9 @@ List.concat_eq_append _ _
 
 lemma List.reverse_eq_reverse (x : List α) :
   List.reverse x = reverse x := by
-{ induction x with
+  induction x with
   | nil => rfl
-  | cons y hy h => simp_rw [List.reverse_cons, h, reverse, List.concat_eq_append] }
+  | cons y hy h => simp_rw [List.reverse_cons, h, reverse, List.concat_eq_append]
 
 -- `List` has the structure of a `Setoid`, where two lists are related if they are permuations
 -- of each other. This equivalence relation is called `List.Perm`, and it is defined inductively.
@@ -177,13 +177,13 @@ lemma List.cons_eq (l : List α) (x : α) :
 rfl
 
 lemma reverse_perm (l : List α) : List.Perm l (reverse l) := by
-{ induction l with
+  induction l with
   | nil => rfl
   | cons p hp hhp =>
     { rw [reverse.cons_apply, List.cons_eq]
       apply List.Perm.trans List.perm_append_comm
       rw [List.perm_append_right_iff]
-      exact hhp } }
+      exact hhp }
 
 
 -- Now let's move on to `Multiset`. This is the quotient of the `List` type by the `List.Perm`
@@ -193,8 +193,8 @@ lemma reverse_perm (l : List α) : List.Perm l (reverse l) := by
 -- Use `reverse_perm` to show that the reverse of a multiset stays the same.
 -- You will want to use `Quot.sound`.
 lemma reverse_multiset (l : List α) : Multiset.ofList l = Multiset.ofList (reverse l) := by
-{ simp only [Multiset.coe_eq_coe]
-  exact reverse_perm l }
+  simp only [Multiset.coe_eq_coe]
+  exact reverse_perm l
 
 end Hidden
 
@@ -220,7 +220,7 @@ open BigOperators
 #check Finset.sum_range_succ
 
 lemma sum_range (n : ℕ) : ∑ i in Finset.range n, (↑i : ℚ) = ↑n * (n - 1) / 2 := by
-{ induction n with
+  induction n with
   | zero => simp only [Nat.zero_eq, Finset.range_zero, Finset.sum_empty, CharP.cast_eq_zero,
       zero_sub, mul_neg, mul_one, neg_zero, zero_div]
-  | succ _ hd => simp_rw [Finset.sum_range_succ, hd, Nat.cast_succ, add_sub_cancel_right]; linarith }
+  | succ _ hd => simp_rw [Finset.sum_range_succ, hd, Nat.cast_succ, add_sub_cancel_right]; linarith

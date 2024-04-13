@@ -110,12 +110,12 @@ revert hnn
 induction n' with
 | zero => intro; contradiction
 | succ _ hd =>
-  { intro hn
+    intro hn
     rcases Nat.le_or_eq_of_le_succ hn with (h | h)
     { rw [pow_succ]
       exact myOdd_mul_myOdd _ _ (hd h) hm }
     { rw [← h, pow_one]
-      exact hm } }
+      exact hm }
 
 end
 
@@ -219,7 +219,7 @@ ne_types_of_different_property _ hα ((uncountable_iff_not_countable _).mp hβ)
 
 -- Now prove this. (Hint: you don't need to use the previous one.)
 lemma ne_types_of_ne_cardinal {α β : Type} (h : #α ≠ #β) : α ≠ β :=
-by { rintro rfl; contradiction }
+by rintro rfl; contradiction
 
 -- *Reminder*: if you couldn't find two types that were not equal before, go back to theorem `exists_ne_types` a try it now.
 
@@ -240,9 +240,9 @@ open Function
 -- Note that Lean uses the `↑` notation for `Nat.cast`. We will learn more about this next week.
 
 lemma not_surjective_nat_int : ¬ Surjective (Nat.cast : ℕ → ℤ) := λ h => by
-{ obtain ⟨x, hx⟩ := h (-1)
+  obtain ⟨x, hx⟩ := h (-1)
   have : (0 : ℤ) ≤ ↑x := Nat.cast_nonneg x
-  linarith }
+  linarith
 
 -- You may find the following lemma(s) useful.
 #check Nat.cast_le (α := ℤ)

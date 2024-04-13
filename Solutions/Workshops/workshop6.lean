@@ -140,8 +140,8 @@ structure Group₁ (α : Type*) where
 namespace Point
 
 theorem add_assoc (a b c : Point ℕ) : (a.add b).add c = a.add (b.add c) := by
-{ simp only [add, Point.ext_iff, Nat.add_assoc]
-  tada }
+  simp only [add, Point.ext_iff, Nat.add_assoc]
+  tada
 
 end Point
 
@@ -154,7 +154,12 @@ structure SpecialPoint extends Point ℕ, RGBValue where
 
 namespace SpecialPoint
 
-def add : SpecialPoint → SpecialPoint → SpecialPoint := λ a b ↦ sorry
+def _root_.RGBValue.add : RGBValue → RGBValue → RGBValue :=
+λ a b => ⟨(a.red + b.red), (a.green + b.green), (a.blue + b.blue)⟩
+
+def add : SpecialPoint → SpecialPoint → SpecialPoint :=
+λ a b ↦ ⟨(toPoint a).add (toPoint b), (toRGBValue a).add (toRGBValue b),
+  by simp_rw [Point.add, RGBValue.add, a.gradientEqn, b.gradientEqn]⟩
 
 end SpecialPoint
 

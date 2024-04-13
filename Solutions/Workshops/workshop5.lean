@@ -88,7 +88,7 @@ def and : MyBool → MyBool → MyBool
 def and' : MyBool → MyBool → MyBool := by
   rintro (true | false) (true | false)
   · exact true
-  repeat { exact false }
+  repeat exact false
 
 end MyBool
 end
@@ -153,8 +153,8 @@ lemma zero_add' (n : MyNat) : add zero n = n := by
 
 -- 1. Prove that addition is associative. (Can you do it in 3 lines?)
 -- i can do it in 1 line hehe
-lemma add_assoc (n m k : MyNat) : add (add n m) k = add n (add m k) := by
-{ induction k with | zero => rfl | succ _ h => simp_rw [add_succ, h] }
+lemma add_assoc (n m k : MyNat) : add (add n m) k = add n (add m k) :=
+by induction k with | zero => rfl | succ _ h => simp_rw [add_succ, h]
 
 -- Hint: we defined what `add n (succ m)`, with the succesor on the right.
 -- Does it help to induct on the rightmost argument?
@@ -216,7 +216,7 @@ structure MyExists' {α : Type} (p : α → Prop) where
 
 lemma MyExists_iff {α : Type} (p : α → Prop) :
   MyExists p ↔ ∃ x, p x := by
-{ constructor <;> exact λ ⟨x, hx⟩ ↦ ⟨x, hx⟩ }
+  constructor <;> exact λ ⟨x, hx⟩ ↦ ⟨x, hx⟩
 
 -- 3. Prove that the negation of `MyExists` is what you'd expect.
 example {α : Type} (p : α → Prop) : ¬ MyExists p ↔ ∀ x, ¬ p x := by
@@ -336,8 +336,7 @@ def modSucc {n : ℕ} : NatMod n → NatMod n:=
     intro a b h
     apply Quot.sound
     dsimp [NatModRel]
-    rw [Nat.add_mod a, Nat.add_mod b, h]
-  )
+    rw [Nat.add_mod a, Nat.add_mod b, h])
 
 -- Lastly, `Quotient.ind` lets us prove things about terms in a quotient type if we
 -- can prove them for any representative.
@@ -401,22 +400,22 @@ inductive odd : ℕ → Prop where
 #check odd.rec
 
 lemma even.odd_succ {n : ℕ} : even n → odd (n + 1) := λ h ↦ by
-{ induction h with
+  induction h with
   | zero => exact odd.one
-  | add_two _ hd => exact odd.add_two hd }
+  | add_two _ hd => exact odd.add_two hd
 
 lemma odd.even_succ {n : ℕ} : odd n → even (n + 1) := λ h ↦ by
-{ induction h with
+  induction h with
   | one => exact even.add_two even.zero
-  | add_two _ hd => exact even.add_two hd }
+  | add_two _ hd => exact even.add_two hd
 
 lemma even_or_odd (n : ℕ) : even n ∨ odd n := by
-{ induction n with
+  induction n with
   | zero => exact Or.inl even.zero
   | succ d hd =>
-    { rcases hd with (hd | hd)
+      rcases hd with (hd | hd)
       { exact Or.inr hd.odd_succ }
-      { exact Or.inl hd.even_succ } } }
+      { exact Or.inl hd.even_succ }
 
 -- If you would like some more practice, come up with your own lemmas about how `even` and `odd`
 -- interact with other operations on the natural numbers. For example, you could prove that the sum

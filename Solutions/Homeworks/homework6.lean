@@ -112,17 +112,18 @@ def QuotientMonoid.mk [CommMonoid M] (N : Submonoid M) : M → M ⧸ N := Quotie
 -- In that case, you can use `@Setoid.refl M N.Setoid` to explicitly specify the setoid structure.
 instance [CommMonoid M] (N : Submonoid M) : Monoid (M ⧸ N) :=
   letI : Setoid M := Submonoid.Setoid M N
-{ mul := Quotient.map₂' (· * ·) (λ a b ⟨c, hc, d, hd, hcd⟩ e f ⟨g, hg, h, hh, hgh⟩ ↦ by
-  { refine ⟨c * g, mul_mem hc hg, d * h, mul_mem hd hh, ?_⟩
-    rw [mul_assoc, mul_comm c g, ← mul_assoc e, hgh, mul_comm (f * h), ← mul_assoc, hcd,
-      mul_mul_mul_comm b d f h] })
-  mul_assoc := by
-  { rintro ⟨_⟩ ⟨_⟩ ⟨_⟩
-    exact Quotient.sound (by simp_rw [mul_assoc]; rfl) }
-  one := QuotientMonoid.mk M N 1
-  one_mul := by
-    rintro ⟨a⟩
-    exact Quotient.sound (by simp_rw [one_mul]; rfl)
-  mul_one := by
-    rintro ⟨a⟩
-    exact Quotient.sound (by simp_rw [mul_one]; rfl) }
+  -- `letI` is a shorthand for `let Instance`, which is used to declare a local instance
+  { mul := Quotient.map₂' (· * ·) (λ a b ⟨c, hc, d, hd, hcd⟩ e f ⟨g, hg, h, hh, hgh⟩ ↦ by
+    { refine ⟨c * g, mul_mem hc hg, d * h, mul_mem hd hh, ?_⟩
+      rw [mul_assoc, mul_comm c g, ← mul_assoc e, hgh, mul_comm (f * h), ← mul_assoc, hcd,
+        mul_mul_mul_comm b d f h] })
+    mul_assoc := by
+    { rintro ⟨_⟩ ⟨_⟩ ⟨_⟩
+      exact Quotient.sound (by simp_rw [mul_assoc]; rfl) }
+    one := QuotientMonoid.mk M N 1
+    one_mul := by
+      rintro ⟨a⟩
+      exact Quotient.sound (by simp_rw [one_mul]; rfl)
+    mul_one := by
+      rintro ⟨a⟩
+      exact Quotient.sound (by simp_rw [mul_one]; rfl) }
