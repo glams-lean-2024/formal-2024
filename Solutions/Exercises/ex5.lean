@@ -98,7 +98,7 @@ have hnn : 1 ≤ n' := Nat.one_le_iff_ne_zero.mpr (n.ne_zero)
 revert hnn
 induction n' with
 | zero => intro; contradiction
-| succ _ _ => rw [pow_succ']; exact λ _ => mul_myEven _ _ hm
+| succ _ _ => rw [pow_succ]; exact λ _ => mul_myEven _ _ hm
 
 -- also forgot to say that `n : ℕˣ` here
 theorem myOdd_pow : ∀ m (n : ℕˣ), myOdd m → myOdd (m ^ (n : ℕ)) := λ m n hm => by
@@ -112,7 +112,7 @@ induction n' with
 | succ _ hd =>
   { intro hn
     rcases Nat.le_or_eq_of_le_succ hn with (h | h)
-    { rw [pow_succ']
+    { rw [pow_succ]
       exact myOdd_mul_myOdd _ _ (hd h) hm }
     { rw [← h, pow_one]
       exact hm } }

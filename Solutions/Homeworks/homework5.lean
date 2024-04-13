@@ -81,7 +81,7 @@ example (x : ℝ) (n : ℕ) (hx : x ≥ 2) (hn : n ≥ 1) : x ^ n ≥ n * x := b
   | zero => linarith
   | succ d hd =>
     { rcases Nat.of_le_succ hn with (h|h)
-      { simp_rw [Nat.cast_succ, pow_succ', add_mul, one_mul, ge_iff_le]
+      { simp_rw [Nat.cast_succ, pow_succ, add_mul, one_mul, ge_iff_le]
         calc x ^ d * x ≥ d * x * x :=
           mul_le_mul (hd h) le_rfl (by linarith) (pow_nonneg (by linarith) d)
           _ ≥ d * x + x := add_le_mul
@@ -223,4 +223,4 @@ lemma sum_range (n : ℕ) : ∑ i in Finset.range n, (↑i : ℚ) = ↑n * (n - 
 { induction n with
   | zero => simp only [Nat.zero_eq, Finset.range_zero, Finset.sum_empty, CharP.cast_eq_zero,
       zero_sub, mul_neg, mul_one, neg_zero, zero_div]
-  | succ _ hd => simp_rw [Finset.sum_range_succ, hd, Nat.cast_succ, add_sub_cancel]; linarith }
+  | succ _ hd => simp_rw [Finset.sum_range_succ, hd, Nat.cast_succ, add_sub_cancel_right]; linarith }
