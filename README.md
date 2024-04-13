@@ -4,20 +4,12 @@ This is the repository for the GlaMS course on Formalising Mathematics in Lean. 
 
 ## Getting the weekly updates
 
-Please type the following in your terminal to update the repository properly:
+Type the following in your terminal
 ```terminal
-git pull && lake exe cache get
+git pull && lake update -R && lake exe cache get
 ```
 
-If you get an error on the second command, try:
-```terminal
-lake update && lake exe cache get
-```
-
-If you continue getting an error, try:
-```terminal
-yes | rm -r .lake && lake update && lake exe cache get
-```
+If you get an error with `lake update -R`, try `rm -rf .lake` then the above again.
 
 ## How to work on this
 

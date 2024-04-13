@@ -4,7 +4,7 @@ image:
 vscode:
   extensions:
     - leanprover.lean4
-    - paperproof.paperproof
+    # - paperproof.paperproof
 
 tasks:
   - init: git pull && lake exe cache get && lake update
