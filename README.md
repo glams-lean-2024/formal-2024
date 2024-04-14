@@ -27,19 +27,18 @@ Then you can clone this repository to your own computer by writing `git clone ht
 ---
 ### Working on the repository
 
-All the files we will be using can be found in the folder Formal2024: this contains both the workshop and homework sheets.
+All the files we will be using can be found in the folder `Formal2024`: this contains both the workshop and homework sheets.
 
-In order to work on this efficiently, please make a copy of the folder and working on the copy rather than in the folder Formal2024. You can do this by writing `cp -r Formal2024 MyFiles` in your terminal. This copies the whole folder into a new folder called "MyFiles" which you will be working on (you can even create your own Lean files in that folder to experiment on!).
+In order to work on this efficiently, please make a copy of the folder and working on the copy rather than in the folder Formal2024. You can do this by writing `cp -r Formal2024 MyFiles` in your terminal. This copies the whole folder into a new folder called `MyFiles` which you will be working on (you can even create your own Lean files in that folder to experiment on!).
 
-Each week, when the repository gets updated, you can type `git pull` in your terminal, followed by `lake exe cache get`. This adds the new files into the folder `Formal2024`, which you can then copy manually into your own folder.
+Each week, when the repository gets updated, you can type `git pull` in your terminal, then typing `lake update -R` to update all the dependencies, followed by `lake exe cache get`. This adds the new files into the folder `Formal2024`, which you can then copy manually into your own folder.
 
-If you do work on the Formal2024 folder, and get a merge conflict when pulling the repository, then you should type `git config pull --rebase false` before `git pull`, you probably would need to also `git add --all` and `git commit -m "some message"` before `git pull` if you do get a merge conflict.
+If you do work on the `Formal2024` folder, and get a merge conflict when pulling the repository, then you should type `git config pull --rebase false` before `git pull`, you probably would need to also `git add --all` and `git commit -m "some message"` before `git pull` if you do get a merge conflict.
 
 ---
 ### Troubleshooting in Codespaces/Gitpod
 
-- after waiting ~5 minutes for the codespaces to run, you will want to restart any opened file (by doing ctrl / command + shift + P, then you search for something along the lines of `Lean4:restart file`)
+- after waiting ~5 minutes for the codespaces to run, you will want to restart any opened file (by doing `ctrl / command + shift + P`, then you search for something along the lines of `Lean4:restart file`)
 - if it still doesn't work, then you `lake exe cache get` in your terminal
-- if it still doesn't work, then you `lake update` in your terminal
+- if it still doesn't work, then you `lake update -R` in your terminal
 - if you're still not progressing, please message on Discord `#general` under the `Lean` category
-
