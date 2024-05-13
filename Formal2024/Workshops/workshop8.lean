@@ -18,7 +18,7 @@ import Mathlib.Topology.Algebra.InfiniteSum.Basic
   After this, you will have time to work on your projects. Alternatively, if you are not planning
   to do a project (or even if you are), we encourage you to work through the [MIL] section on
   topology. This will introduce the idea of filter and their convergence, which is used in the
-  *mathlib*'s treatment of topololgy. There is a challenge exercise at the end of this file to
+  *mathlib*'s treatment of topology. There is a challenge exercise at the end of this file to
   check your understanding of filters.
 -/
 
