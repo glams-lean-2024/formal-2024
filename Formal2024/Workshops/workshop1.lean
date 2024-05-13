@@ -64,7 +64,7 @@ theorem mul_zero (a : ℝ) : a * 0 = 0 := by
 #  Backwards reasoning
 -/
 
--- Work on the goal. If the conclusion of therem_X is the same as the goal, then `apply` theorem_X and the new goal will be the hypotheses of theorem_X.
+-- Work on the goal. If the conclusion of theorem_X is the same as the goal, then `apply` theorem_X and the new goal will be the hypotheses of theorem_X.
 example (x y z : ℝ) (h₀ : x ≤ y) (h₁ : y ≤ z) : x ≤ z := by
   apply le_trans
   · apply h₀
