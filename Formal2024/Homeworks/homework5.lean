@@ -72,7 +72,7 @@ example (x : ℝ) (n : ℕ) (hx : x ≥ 2) (hn : n ≥ 1) : x ^ n ≥ n * x := b
 
 namespace Hidden
 
--- Internally, a term of `Finset α` is a list of distinct elements of `α` up to permuation.
+-- Internally, a term of `Finset α` is a list of distinct elements of `α` up to permutation.
 -- This uses inductive types and quotients at the same time!
 
 -- First, let's get a little acquainted with the `List` type.

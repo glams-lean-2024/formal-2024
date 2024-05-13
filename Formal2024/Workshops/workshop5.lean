@@ -26,7 +26,7 @@ import Mathlib.GroupTheory.Coset
 section
 
 -- Before me dive into inductive types. Let's revisit those two basic types we just mentioned.
--- We have the hiearchy of type universes indexed by the natural numbers:
+-- We have the hierarchy of type universes indexed by the natural numbers:
 #check Type 0 -- = Type
 #check Type 1
 #check Type 2
@@ -97,13 +97,13 @@ section
 
 #check Nat.add
 
--- The constructors of an indunctive types can also take arguments, even of the type being
+-- The constructors of an inductive types can also take arguments, even of the type being
 -- defined. This is the case for one of the most important types:
 inductive MyNat where
   | zero : MyNat
   | succ (n : MyNat) : MyNat
 
--- You can read this as: a natural number is either `zero` or the succesor of another
+-- You can read this as: a natural number is either `zero` or the successor of another
 -- natural number.
 
 namespace MyNat
@@ -127,7 +127,7 @@ lemma zero_add (n : MyNat) : add zero n = n := by
   | succ n ih => rw [add_succ, ih]
 
 -- There is also the `induction'` tactic, which is more powerful (see `generalizing`) and
--- makes the diferent cases less explicit.
+-- makes the different cases less explicit.
 lemma zero_add' (n : MyNat) : add zero n = n := by
   induction' n with n ih
   · rfl
@@ -156,7 +156,7 @@ lemma zero_add' (n : MyNat) : add zero n = n := by
 lemma add_assoc (n m k : MyNat) : add (add n m) k = add n (add m k) := by
   sorry
 
--- Hint: we defined what `add n (succ m)`, with the succesor on the right.
+-- Hint: we defined what `add n (succ m)`, with the successor on the right.
 -- Does it help to induct on the rightmost argument?
 
 -- 2. Define multiplication in terms of addition.

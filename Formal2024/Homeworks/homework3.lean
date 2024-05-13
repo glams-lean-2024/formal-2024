@@ -145,7 +145,7 @@ theorem convergesTo_mul {s t : ℕ → ℝ} {a b : ℝ} (cs : ConvergesTo s a) (
 
 -- The words `using 1` tell `convert` to not try too hard to match the goal and the conclusion of
 -- the statement. In particular, it will look for similarities on a first level. Try changing `1`
--- to a differnet number, or removing `using 1` altogether to see what happens.
+-- to a different number, or removing `using 1` altogether to see what happens.
 
 
 -- 7. Bonus round!
