@@ -60,7 +60,7 @@ example (a b c : ℝ) (hc : 0 ≤ c) (hab : a ≤ b) : a * c ≤ b * c := by
 One reason why the backward reasoning proof is shorter is because Lean can
 infer of lot of things by comparing the goal and the lemma statement. Indeed
 in the `apply mul_nonneg` line, we didn't need to tell Lean that `x = b - a`
-and `y = c` in the lemma. It was infered by "unification" between the lemma
+and `y = c` in the lemma. It was inferred by "unification" between the lemma
 statement and the goal.
 
 To be fair to the forward reasoning version, we should introduce a convenient
