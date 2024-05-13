@@ -100,7 +100,7 @@ def QuotientMonoid.mk [CommMonoid M] (N : Submonoid M) : M → M ⧸ N := Quotie
 -- Now we can define the monoid structure on the quotient type.
 -- Try to fill in the following instance declaration.
 
--- You can use `Setoid.refl` but it won't always be able to detect the relvant setoid structure.
+-- You can use `Setoid.refl` but it won't always be able to detect the relevant setoid structure.
 -- In that case, you can use `@Setoid.refl M N.Setoid` to explicitly specify the setoid structure.
 instance [CommMonoid M] (N : Submonoid M) : Monoid (M ⧸ N) where
   mul := Quotient.map₂' (· * ·) (by
