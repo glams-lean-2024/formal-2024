@@ -118,7 +118,7 @@ example (h : s ⊆ t) : s ∩ u ⊆ t ∩ u := by
   tada
 
 example (h : s ⊆ t) : s ∩ u ⊆ t ∩ u := by
-  -- This is not needed though, as the anonymus constructor forces Lean to unfold the definitions
+  -- This is not needed though, as the anonymous constructor forces Lean to unfold the definitions
   rintro x ⟨xs, xu⟩
   exact ⟨h xs, xu⟩ -- There may be some slight differences (here we do not need to specify `x`)
   tada
