@@ -91,7 +91,7 @@ example (x : ℝ) : |x + 3| < 5 → -8 < x ∧ x < 2 := by
   rw [abs_lt]
   intro h
   constructor <;> linarith
--- The `<;>` tactic combinator attempts to close every goal opened by `constrcutor`
+-- The `<;>` tactic combinator attempts to close every goal opened by `constructor`
 -- with the given tactic, in this case `linarith`.
 
 
