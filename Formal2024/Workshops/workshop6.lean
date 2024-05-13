@@ -120,7 +120,7 @@ def rgp : RedGreenPoint ℕ :=
 example : rgp.x   = 1 := rfl
 example : rgp.red = 200 := rfl
 
--- Here is an example of the use of fields in a structure to give contraints.
+-- Here is an example of the use of fields in a structure to give constraints.
 
 structure Group₁ (α : Type*) where
   mul : α → α → α
