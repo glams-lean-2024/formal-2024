@@ -320,7 +320,7 @@ attribute [local instance] Algebra.ofModule_inst
 
 /-
  Now the module given by the inner product space **is** definitionally equal to that
-   inferred by the algebra (which is inferred by the module inferred by the inner producrt space).
+   inferred by the algebra (which is inferred by the module inferred by the inner product space).
 -/
 example {E : Type*} [NACGoR E] [h : InnerProductSpace ℂ E] [SMulCommClass ℂ E E]
   [IsScalarTower ℂ E E] :
