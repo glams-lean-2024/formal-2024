@@ -190,7 +190,7 @@ end
 example : ∃ x : ℝ, 2 * x = 5 :=
   ⟨5/2 , by norm_num⟩ -- Lean matches the given data with the goal
 
--- To use an exists statement, we need the command `rcases` and the anonymus constructor
+-- To use an exists statement, we need the command `rcases` and the anonymous constructor
 
 def FnHasUb (f : ℝ → ℝ) :=
   ∃ a, FnUb f a -- `f` has an upper bound
