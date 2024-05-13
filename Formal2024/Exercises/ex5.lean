@@ -167,7 +167,7 @@ open Function
 
 #check Nat.cast (α := ℤ)
 -- Cast is defined in greater generality as a function `ℕ → α` for certain types `α`. This
--- argument is implicit, but we can provide it explicilty using the `(α := ℤ)` syntax.
+-- argument is implicit, but we can provide it explicitly using the `(α := ℤ)` syntax.
 #check Nat.cast (α := ℤ) 0
 -- Note that Lean uses the `↑` notation for `Nat.cast`. We will learn more about this next week.
 
